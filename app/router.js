@@ -8,6 +8,9 @@ import {
 const Home = () => (
   <div>
     <h2>Home</h2>
+	<label htmlFor="name">名称</label>
+		<input type="text" className="form-control" id="name" 
+			   placeholder="请输入名称"/>
   </div>
 )
 
