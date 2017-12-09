@@ -1,0 +1,62 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>console demo</title>
+	</head>
+  <body>
+    <script>
+      //控制台输出是方便开发人员设试，一般F12是打开浏览器控制台
+      //chrome浏览器通过F12查看console页即可知道输出内容
+      console.log({name: 'test'});
+      console.log(document.body);
+      console.debug("debug");
+      console.info("info");
+      console.warn("warn");
+      console.error("error");
+
+      //和log一样，但输出的信息要比log更加丰富，看F12后的Console页会有一个更加直观的认识
+      //MDN 上说这个方法是为了将特定的 JS 对象显示为可以交互的列表
+      console.dir({name: 'test'});
+      console.dir(document.body);
+
+      //会把json变成一个表格同样会有dir的Object信息
+      console.table(({name: 'test'}));
+
+      //打出代码段执行时间 for-test: 10.xxxms
+      console.time("for-test");
+      var d = new Date();
+      while(true){
+        var d1 = new Date();
+        var i = d1-d;
+        if(i >10)break;//10秒后跳出循环
+      }
+      console.timeEnd("for-test");
+
+      //如果assert为真什么也不输出，但如果为假会输出Assertion failed: cosole.assert
+      const arr = [1,2,3];
+      console.assert(arr.length === 4);
+
+      //调试代码时，我们经常需要知道一段代码被执行了多少次，我们可以使用 console.count() 来方便的达到我们的目的。
+      function func(){
+        console.count("label");
+      }
+
+      for(let i = 0; i < 3; i++){
+        func();
+      }
+
+      //一般的 console.log() 方法的输出没有层级关系，在需要一些显示层级关系的输出中显得苍白无力，使用 console.group() 可以达到我们的目的。
+      console.group("1");
+      console.log("1-1");
+      console.log("1-2");
+      console.groupEnd();
+      console.group("2");
+      console.log("2-1");
+      console.log("2-2");
+      console.groupEnd();
+
+    </script>
+  </body>
+</html>
