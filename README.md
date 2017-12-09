@@ -8,10 +8,10 @@
 　　也就是说HTML+CSS只是一个静态的HTML页面，而各种交互效果比如点击响应，图片切换等需要使用JS，即JS用来操作这些页面无素（DOM元素）。所以需要注意只要结构加载完的页面元素才可以获取到，这也就是为什么CSS会放在HTML BODY体头而JS放到HTML BODY尾的一个原因。
 
 > 如果把JS放到了HTML头，可以使用如下方式等到所有结构加载完成后再加载JS
-1. JS： window.onload=function(){}，是JS的标准做法，等页面所有资源文件都加载完成后再执行
-2. JQ：$(document).ready(function(){}),是JQuery的方式
-3. window.addEventListenner('load', function(){}, false), 但这咱方式不兼容IE 6 7 8.
-4. IE 6 7 8下 window.attachEvent('onreadystatechange',function(){})
+> 1. JS： window.onload=function(){}，是JS的标准做法，等页面所有资源文件都加载完成后再执行
+> 2. JQ：$(document).ready(function(){}),是JQuery的方式
+> 3. window.addEventListenner('load', function(){}, false), 但这咱方式不兼容IE 6 7 8.
+> 4. IE 6 7 8下 window.attachEvent('onreadystatechange',function(){})
 
 # DOM
 　　文档对象模型（Document Object Model，简称DOM），是W3C组织推荐的处理可扩展标志语言的标准编程接口。在网页上，组织页面（或文档）的对象被组织在一个树形结构中，用来表示文档中对象的标准模型就称为DOM。HTM的DOM如下图所示：
