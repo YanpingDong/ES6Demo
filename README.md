@@ -29,7 +29,33 @@
   - W3C发布的规范是开发者们总节开发者总结的产物，比如： 谷歌浏览器开发了一个新的CSS属性（border-radius）用来快速实现盒子圆角（内核会针对该CSS属性进行内核操作）。后来火狐浏览器也实现了该属性。最后慢慢在部分内核也都加入了该属性。然后W3C会将其融入到规范中。从中体现出了W3C的滞后性。
   - 每个浏览器内核会自己开发一些自有的特性，其它内核可能由于其它原因也不支持。或者有的内核不按W3C实现其定义的标准。
 
-# [ES6ReactRouter](https://github.com/YanpingDong/ES6Demo/tree/master/ES6ReactRouter)
+# 页面如何加载JS代码
+　　通用说法为如何导入，在浏览器加载页面的时候会加载JS，我们需要做的只是告知浏览器如何加载即导入。
+
+- 行内导入：即在HTML页面中直接写入JS代码。这种方式不安全，第三方可能会注入不安全代码
+
+```
+<div onclick="alert('hello world')">这是行内导入</div>
+```
+
+- 内嵌式：在script代码块中写JS代码
+
+```
+<script>alert('hello world')</script>
+```
+
+- 外链式：用script标签将写有JS代码的文件导入
+
+```
+import.js文件：
+alert('hello world')
+
+index.html文件：
+<script src="import.js file path/import.js"></script>
+```
+**内嵌式导入的代码直接写入外链式导入的script块中，写入外链式导入的script块中的代码是不会被执行**
+
+#[ES6ReactRouter](https://github.com/YanpingDong/ES6Demo/tree/master/ES6ReactRouter)
 
 　　使用的前端技术： React Router
 react-router:https://reacttraining.com/react-router/web/example/basic
