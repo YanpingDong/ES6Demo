@@ -40,7 +40,7 @@
 
 　　直白的说内核的做用就是识别HTML CSS JS按其要求渲染绘制页面。
 
-  ## 浏览器兼容
+## 浏览器兼容
   - W3C发布的规范是开发者们总节开发者总结的产物，比如： 谷歌浏览器开发了一个新的CSS属性（border-radius）用来快速实现盒子圆角（内核会针对该CSS属性进行内核操作）。后来火狐浏览器也实现了该属性。最后慢慢在部分内核也都加入了该属性。然后W3C会将其融入到规范中。从中体现出了W3C的滞后性。
   - 每个浏览器内核会自己开发一些自有的特性，其它内核可能由于其它原因也不支持。或者有的内核不按W3C实现其定义的标准。
 
@@ -125,11 +125,12 @@ index.HTML
 ```
 
 # JS常见输出方式
-　　可以用常见输出进行debug信息输出。
 
-1. alert：弹出提示框，提示的内容最后都会转成字符串输出。使用了toString这个方法。例：alert({name: 'zhufeng'}); //=>"object Object" [DEMO:[alertDemo](SimpleDemo/alertDemo.html)]
+1. alert：弹出提示框，提示的内容最后都会转成字符串输出。使用了toString这个方法。例：alert({name: 'zhufeng'}); //=>"object Object"。 [DEMO:[alertDemo](SimpleDemo/alertDemo.html)]
 
-2. confirm：比alert多了一个[取消]按钮，返回值是一个bool量来表明点击的是[确定]还是[取消]按键。 [DEMO:[confirmDemo](SimpleDemo/confirmDemo.html)]
+2. confirm：比alert多了一个[取消]按钮，返回值是一个bool量来表明点击的是[确定]还是[取消]按键。和alert一样提示的内容最后都会转成字符串输出。 [DEMO:[confirmDemo](SimpleDemo/confirmDemo.html)]
+
+3. prompt：在confirm基础上加了输入对话框,实际有三种值a.点取消是null;b.点确定但没有输入任何值是空字串；c.如果有输入则返回的是输入数据。同样和alert一样提示的内容最后都会转成字符串输出。[DEMO:[promptDemo](SimpleDemo/promptDemo.html)]
 
 # Webpack
 
