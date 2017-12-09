@@ -127,8 +127,9 @@ index.HTML
 # JS常见输出方式
 　　可以用常见输出进行debug信息输出。
 
-1. alert：弹出提示框，提示的内容最后都会转成字符串输出。使用了toString这个方法。例：alert({name: 'zhufeng'}); //=>"object Object" [alertDemo](SimpleDemo/alertDemo.html)
-2. confirm：比alert多了一个[取消]按钮，返回值是一个bool量来表明点击的是[确定]还是[取消]按键。
+1. alert：弹出提示框，提示的内容最后都会转成字符串输出。使用了toString这个方法。例：alert({name: 'zhufeng'}); //=>"object Object" [DEMO:[alertDemo](SimpleDemo/alertDemo.html)]
+
+2. confirm：比alert多了一个[取消]按钮，返回值是一个bool量来表明点击的是[确定]还是[取消]按键。 [DEMO:[confirmDemo](SimpleDemo/confirmDemo.html)]
 
 # Webpack
 
