@@ -26,9 +26,10 @@
   直白的说内核的做用就是识别HTML CSS JS按其要求渲染绘制页面。
 
   ## 浏览器兼容
-    1. W3C发布的规范是开发者们总节开发者总结的产物，比如： 谷歌浏览器开发了一个新的CSS属性（border-radius）用来快速实现盒子圆角（内核会针对该CSS属性进行内核操作）。后来火狐浏览器也实现了该属性。最后慢慢在部分内核也都加入了该属性。然后W3C会将其融入到规范中。从中体现出了W3C的滞后性。
-    2. 每个浏览器内核会自己开发一些自有的特性，其它内核可能由于其它原因也不支持。或者有的内核不按W3C实现其定义的标准。
+    - W3C发布的规范是开发者们总节开发者总结的产物，比如： 谷歌浏览器开发了一个新的CSS属性（border-radius）用来快速实现盒子圆角（内核会针对该CSS属性进行内核操作）。后来火狐浏览器也实现了该属性。最后慢慢在部分内核也都加入了该属性。然后W3C会将其融入到规范中。从中体现出了W3C的滞后性。
+    - 每个浏览器内核会自己开发一些自有的特性，其它内核可能由于其它原因也不支持。或者有的内核不按W3C实现其定义的标准。
 
-# ES6Demo
-
+# ES6ReactRouter Demo
+[ES6ReactRouter]（https://github.com/YanpingDong/ES6Demo/tree/master/ES6ReactRouter）
+使用的前端技术： React Router
 react-router:https://reacttraining.com/react-router/web/example/basic
