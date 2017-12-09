@@ -55,7 +55,9 @@ index.html文件：
 ```
 **内嵌式导入的代码直接写入外链式导入的script块中，写入外链式导入的script块中的代码是不会被执行**
 
-#[ES6ReactRouter](https://github.com/YanpingDong/ES6Demo/tree/master/ES6ReactRouter)
+
+# [ES6ReactRouter](https://github.com/YanpingDong/ES6Demo/tree/master/ES6ReactRouter)
+
 
 　　使用的前端技术： React Router
 react-router:https://reacttraining.com/react-router/web/example/basic
