@@ -132,8 +132,9 @@ index.HTML
 
 3. prompt：在confirm基础上加了输入对话框,实际有三种值a.点取消是null;b.点确定但没有输入任何值是空字串；c.如果有输入则返回的是输入数据。同样和alert一样提示的内容最后都会转成字符串输出。[DEMO:[promptDemo](SimpleDemo/promptDemo.html)]
 
-4. console对象：以上三种是交互所有，当然也可以用来做调试，但调试过程中使用控制台来进行出来对于程序员来讲是很方便的一种方式。这种方式不会转换数据类型。其中的方法罗列如下，细节可以看Demo。console.dir、console.table | console.debug()、console.info()、 console.warn() 、 console.error()、console.log()|console.time() 、 console.timeEnd()|cconsole.assert()、console.count()|console.group、console.groupEnd()、 console.groupCollapsed()。可以参考[JS中的console对象](http://blog.csdn.net/donggx/article/details/53665269) [DEMO:[consoleOutput](SimpleDemo/consoleOutput.html)]
-
+4. console对象：以上三种是交互所有，当然也可以用来做调试，但调试过程中使用控制台来进行出来对于程序员来讲是很方便的一种方式。这种方式不会转换数据类型。其中的方法罗列如下，细节可以看Demo。console.dir()、console.table() | console.debug()、console.info()、 console.warn() 、 console.error()、console.log() | console.time() 、 console.timeEnd() | cconsole.assert()、console.count() | console.group、console.groupEnd()、 console.groupCollapsed()。可以参考[JS中的console对象](http://blog.csdn.net/donggx/article/details/53665269) [DEMO:[consoleOutput](SimpleDemo/consoleOutput.html)]
+DEMO运行后视图如下：
+![](pic/consoleOutput.jpg)
 5. document.write：这个是JS的一个方法直接向HTML页面写入字串数据
 
 # Webpack
