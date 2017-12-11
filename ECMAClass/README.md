@@ -24,6 +24,8 @@ oCar1.showColor();		//输出 "red"
 oCar2.showColor();		//输出 "blue"
 ```
 
+[factoryModelDemo](factoryModelDemo.html)
+
 **构造函数方式**
 
 　　创建构造函数就像创建工厂函数一样容易。第一步选择类名，即构造函数的名字。根据惯例，这个名字的首字母大写，以使它与首字母通常是小写的变量名分开。除了这点不同，构造函数看起来很像工厂函数。请考虑下面的例子：
@@ -41,6 +43,8 @@ function Car(sColor,iDoors,iMpg) {
 var oCar1 = new Car("red",4,23);
 var oCar2 = new Car("blue",3,25);
 ```
+
+[constructorModelDemo](constructorModelDemo.html)
 
 　　下面为您解释上面的代码与工厂方式的差别。首先在构造函数内没有创建对象，而是使用 this 关键字。使用 new 运算符构造函数时，在执行第一行代码前先创建一个对象，只有用 this 才能访问该对象。然后可以直接赋予 this 属性，默认情况下是构造函数的返回值（不必明确使用 return 运算符）。
 　　你也许会问，这种方式在管理函数方面是否存在于前一种方式相同的问题呢？是的。
@@ -65,6 +69,8 @@ Car.prototype.showColor = function() {
 var oCar1 = new Car();
 var oCar2 = new Car();
 ```
+
+[prototypeModelDemo](prototypeModelDemo.html)
 
 　　在这段代码中，首先定义构造函数（Car），其中无任何代码。接下来的几行代码，通过给 Car 的 prototype 属性添加属性去定义 Car 对象的属性。调用 new Car() 时，原型的所有属性都被立即赋予要创建的对象，意味着所有 Car 实例存放的都是指向 showColor() 函数的指针。从语义上讲，所有属性看起来都属于一个对象，因此解决了前面两种方式存在的问题。
 　　此外，使用这种方式，还能用 instanceof 运算符检查给定变量指向的对象的类型。因此，下面的代码将输出 TRUE：
@@ -96,12 +102,15 @@ alert(oCar1.drivers);	//输出 "Mike,John,Bill"
 alert(oCar2.drivers);	//输出 "Mike,John,Bill"
 ```
 
+[prototypeModelProblemDemo](prototypeModelProblemDemo.html)
+
 　　上面的代码中，属性 drivers 是指向 Array 对象的指针，该数组中包含两个名字 "Mike" 和 "John"。由于 drivers 是引用值，Car 的两个实例都指向同一个数组。这意味着给 oCar1.drivers 添加值 "Bill"，在 oCar2.drivers 中也能看到。输出这两个指针中的任何一个，结果都是显示字符串 "Mike,John,Bill"。
 　　由于创建对象时有这么多问题，你一定会想，是否有种合理的创建对象的方法呢？答案是有，需要联合使用构造函数和原型方式。
 
 **混合的构造函数/原型方式**
 
 　　联合使用构造函数和原型方式，就可像用其他程序设计语言一样创建对象。这种概念非常简单，即用构造函数定义对象的所有非函数属性，用原型方式定义对象的函数属性（方法）。结果是，所有函数都只创建一次，而每个对象都具有自己的对象属性实例。
+
 　　我们重写了前面的例子，代码如下：
 
 ```
@@ -122,8 +131,11 @@ var oCar2 = new Car("blue",3,25);
 oCar1.drivers.push("Bill");
 
 alert(oCar1.drivers);	//输出 "Mike,John,Bill"
-alert(oCar2.drivers);	//输出 "Mike,John"```
+alert(oCar2.drivers);	//输出 "Mike,John"
 ```
+
+[prototypeConstructorDemo](prototypeConstructorDemo.html)
+
 
 　　现在就更像创建一般对象了。所有的非函数属性都在构造函数中创建，意味着又能够用构造函数的参数赋予属性默认值了。因为只创建 showColor() 函数的一个实例，所以没有内存浪费。此外，给 oCar1 的 drivers 数组添加 "Bill" 值，不会影响到 oCar2 的数组，所以输出这些数组的值时，oCar1.drivers 显示的是 "Mike,John,Bill"，而 oCar2.drivers 显示的是 "Mike,John"。因为使用了原型方式，所以仍然能利用 instanceof 运算符来判断对象的类型。
 　　这种方式是 ECMAScript 采用的主要方式，它具有其他方式的特性，却没有他们的副作用。不过，有些开发者仍觉得这种方法不够完美。
@@ -151,7 +163,8 @@ class Car {
 ```
 
 　　Java 很好地打包了 Car 类的所有属性和方法，因此看见这段代码就知道它要实现什么功能，它定义了一个对象的信息。批评混合的构造函数/原型方式的人认为，在构造函数内部找属性，在其外部找方法的做法不合逻辑。因此，他们设计了动态原型方法，以提供更友好的编码风格。
-动态原型方法的基本想法与混合的构造函数/原型方式相同，即在构造函数内定义非函数属性，而函数属性则利用原型属性定义。唯一的区别是赋予对象方法的位置。下面是用动态原型方法重写的 Car 类：
+
+　　动态原型方法的基本想法与混合的构造函数/原型方式相同，即在构造函数内定义非函数属性，而函数属性则利用原型属性定义。唯一的区别是赋予对象方法的位置。下面是用动态原型方法重写的 Car 类：
 
 ```
 function Car(sColor,iDoors,iMpg) {
@@ -170,9 +183,13 @@ function Car(sColor,iDoors,iMpg) {
 }
 ```
 
+
+[dynamicPrototypeModelDemo](dynamicPrototypeModelDemo.html)
+
 　　直到检查 typeof Car.initialized 是否等于 "undefined" 之前，这个构造函数都未发生变化。这行代码是动态原型方法中最重要的部分。如果这个值未定义，构造函数将用原型方式继续定义对象的方法，然后把 Car.initialized 设置为 true。如果这个值定义了（它的值为 true 时，typeof 的值为 Boolean），那么就不再创建该方法。简而言之，该方法使用标志（initialized）来判断是否已给原型赋予了任何方法。该方法只创建并赋值一次，传统的 OOP 开发者会高兴地发现，这段代码看起来更像其他语言中的类定义了。
 
 # 继承机制的实现
+
 　　要用 ECMAScript 实现继承机制，您可以从要继承的基类入手。所有开发者定义的类都可作为基类。出于安全原因，本地类和宿主类不能作为基类，这样可以防止公用访问编译过的浏览器级的代码，因为这些代码可以被用于恶意攻击。
 　　选定基类后，就可以创建它的子类了。是否使用基类完全由你决定。有时，你可能想创建一个不能直接使用的基类，它只是用于给子类提供通用的函数。在这种情况下，基类被看作抽象类。
 　　尽管 ECMAScript 并没有像其他语言那样严格地定义抽象类，但有时它的确会创建一些不允许使用的类。通常，我们称这种类为抽象类。
@@ -184,7 +201,7 @@ function Car(sColor,iDoors,iMpg) {
 
 下面为您介绍几种具体的继承方式。
 
-对象冒充
+**对象冒充**
 
 　　构想原始的 ECMAScript 时，根本没打算设计对象冒充（object masquerading）。它是在开发者开始理解函数的工作方式，尤其是如何在函数环境中使用 this 关键字后才发展出来。
 其原理如下：构造函数使用 this 关键字给所有属性和方法赋值（即采用类声明的构造函数方式）。因为构造函数只是一个函数，所以可使 ClassA 构造函数成为 ClassB 的方法，然后调用它。ClassB 就会收到 ClassA 的构造函数中定义的属性和方法。例如，用下面的方式定义 ClassA 和 ClassB：
@@ -232,6 +249,8 @@ objA.sayColor();	//输出 "blue"
 objB.sayColor();	//输出 "red"
 objB.sayName();		//输出 "John"
 ```
+
+[masqueradingToInheritDemo](masqueradingToInheritDemo.html)
 
 对象冒充可以实现多重继承
 
@@ -285,6 +304,8 @@ function ClassB(sColor, sName) {
 }
 ```
 
+[usingCallMethodToInheritDemo](usingCallMethodToInheritDemo.html)
+
 　　这里，我们需要让 ClassA 中的关键字 this 等于新创建的 ClassB 对象，因此 this 是第一个参数。第二个参数 sColor 对两个类来说都是唯一的参数。
 
 **apply() 方法**
@@ -318,6 +339,7 @@ function ClassB(sColor, sName) {
     };
 }
 ```
+[usingApplyMethodToInheritDemo](usingApplyMethodToInheritDemo.html)
 
 　　同样的，第一个参数仍是 this，第二个参数是只有一个值 color 的数组。可以把 ClassB 的整个 arguments 对象作为第二个参数传递给 apply() 方法：
 
@@ -375,7 +397,11 @@ ClassB.prototype.name = "";
 ClassB.prototype.sayName = function () {
     alert(this.name);
 };
+```
+
 可通过运行下面的例子测试这段代码：
+
+```
 var objA = new ClassA();
 var objB = new ClassB();
 objA.color = "blue";
@@ -385,6 +411,9 @@ objA.sayColor();
 objB.sayColor();
 objB.sayName();
 ```
+
+[prototypeWayToInheritDome](prototypeWayToInheritDome.html)
+
 
 　　此外，在原型链中，instanceof 运算符的运行方式也很独特。对 ClassB 的所有实例，instanceof 为 ClassA 和 ClassB 都返回 true。例如：
 
@@ -434,3 +463,5 @@ objA.sayColor();	//输出 "blue"
 objB.sayColor();	//输出 "red"
 objB.sayName();	//输出 "John"
 ```
+
+[mixWayToInheritDemo](mixWayToInheritDemo.html)
