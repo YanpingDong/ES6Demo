@@ -384,6 +384,7 @@ sayHello.alternate();	//输出 "hi"
 ## 关键字 this
 
 **this 的功能**
+
 　　在 ECMAScript 中，要掌握的最重要的概念之一是关键字 this 的用法，它用在对象的方法中。关键字 this 总是指向调用该方法的对象，例如：
 ```
 var oCar = new Object;
@@ -407,6 +408,7 @@ oCar.showColor();		//输出 "red"
 ```
 
 **使用 this 的原因**
+
 　　为什么使用 this 呢？因为在实例化对象时，总是不能确定开发者会使用什么样的变量名。使用 this，即可在任何多个地方重用同一个函数。请思考下面的例子：
 
 ```
@@ -436,3 +438,9 @@ function showColor() {
 ```
 
 　　**如果不用对象或 this 关键字引用变量，ECMAScript 就会把它看作局部变量或全局变量。然后该函数将查找名为 color 的局部或全局变量，但是不会找到。结果如何呢？该函数将在警告中显示 "null"。**
+
+# [ECMA class](ECMAClass)
+
+　　解释ECMA中类的定义（其实其只有对象的定义无类的概念），如何实现继承等。
+
+　　如果想要更多的细节可以参见： [ECMA W3C School 教程](https://www.w3cschool.cn/pro_js_object_defining.html)
