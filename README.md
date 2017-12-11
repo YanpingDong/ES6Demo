@@ -7,8 +7,6 @@
 
 　　也就是说HTML+CSS只是一个静态的HTML页面，而各种交互效果比如点击响应，图片切换等需要使用JS，即JS用来操作这些页面无素（DOM元素）。所以需要注意只要结构加载完的页面元素才可以获取到，这也就是为什么CSS会放在HTML BODY体头而JS放到HTML BODY尾的一个原因。
 
-**目前大部分项目会把CSS引入放到BODY 中的Head里，而JS引入放到BODY尾**
-
 > 如果把JS放到了HTML头，可以使用如下方式等到所有结构加载完成后再加载JS
 > 1. JS： window.onload=function(){}，是JS的标准做法，等页面所有资源文件都加载完成后再执行
 > 2. JQ：$(document).ready(function(){}),是JQuery的方式
@@ -16,7 +14,7 @@
 > 4. IE 6 7 8下 window.attachEvent('onreadystatechange',function(){})
 
 # DOM
-　　文档对象模型（Document Object Model，简称DOM），是W3C组织推荐的处理可扩展标志语言的标准编程接口。在网页上，组织页面（或文档）的对象被组织在一个树形结构中，用来表示文档中对象的标准模型就称为DOM。HTM的DOM如下图所示：
+　　文档对象模型（Document Object Model，简称DOM），是W3C组织推荐的处理可扩展标志语言的标准编程接口。在网页上，组织页面（或文档）的对象被组织在一个树形结构中，用来表示文档中对象的标准模型就称为DOM。HTML的DOM如下图所示：
 
 ![](pic/dom.jpg)
 
@@ -40,7 +38,7 @@
 
 　　直白的说内核的做用就是识别HTML CSS JS按其要求渲染绘制页面。
 
-## 浏览器兼容
+  ## 浏览器兼容
   - W3C发布的规范是开发者们总节开发者总结的产物，比如： 谷歌浏览器开发了一个新的CSS属性（border-radius）用来快速实现盒子圆角（内核会针对该CSS属性进行内核操作）。后来火狐浏览器也实现了该属性。最后慢慢在部分内核也都加入了该属性。然后W3C会将其融入到规范中。从中体现出了W3C的滞后性。
   - 每个浏览器内核会自己开发一些自有的特性，其它内核可能由于其它原因也不支持。或者有的内核不按W3C实现其定义的标准。
 
@@ -110,6 +108,7 @@ index.HTML
 
 >　　导入样式可以避免过多页面指向一个css文件。当网站中使用同一个CSS文件的页面不是非常多时，这两种方式在效果方面几乎是没有不同的，但网站的页面数达到一定程度时(比如新浪等门户)，如果采用链接的方式可能就会使得由于多个页面调用同一个CSS文件而造成速度下降
 
+**目前大部分项目会把CSS引入放到BODY 中的Head里，而JS引入放到BODY尾**
 
 ```
 <html lang="en">
@@ -123,21 +122,6 @@ index.HTML
   </body>
 </html>
 ```
-
-# JS常见输出方式
-
-1. alert：弹出提示框，提示的内容最后都会转成字符串输出。使用了toString这个方法。例：alert({name: 'zhufeng'}); //=>"object Object"。 [DEMO:[alertDemo](SimpleDemo/alertDemo.html)]
-
-2. confirm：比alert多了一个[取消]按钮，返回值是一个bool量来表明点击的是[确定]还是[取消]按键。和alert一样提示的内容最后都会转成字符串输出。 [DEMO:[confirmDemo](SimpleDemo/confirmDemo.html)]
-
-3. prompt：在confirm基础上加了输入对话框,实际有三种值a.点取消是null;b.点确定但没有输入任何值是空字串；c.如果有输入则返回的是输入数据。同样和alert一样提示的内容最后都会转成字符串输出。[DEMO:[promptDemo](SimpleDemo/promptDemo.html)]
-
-4. console对象：以上三种是交互所有，当然也可以用来做调试，但调试过程中使用控制台来进行出来对于程序员来讲是很方便的一种方式。这种方式不会转换数据类型。其中的方法罗列如下，细节可以看Demo。console.dir()、console.table() | console.debug()、console.info()、 console.warn() 、 console.error()、console.log() | console.time() 、 console.timeEnd() | cconsole.assert()、console.count() | console.group、console.groupEnd()、 console.groupCollapsed()。可以参考[JS中的console对象](http://blog.csdn.net/donggx/article/details/53665269) [DEMO:[consoleOutput](SimpleDemo/consoleOutput.html)]
-DEMO运行后视图如下：
-![](pic/consoleOutput.jpg)
-5. document.write：这个是JS的一个方法直接向HTML页面写入字串数据
-
-# Webpack
 
 # [ES6ReactRouter](ES6ReactRouter)
 
