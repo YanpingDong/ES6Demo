@@ -1,0 +1,43 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>constructor demo</title>
+	</head>
+  <body>
+    <script>
+      console.log(("jerry").constructor.toString());//function String(){[native code]}
+      console.log((12).constructor.toString());//function Number(){[native code]}
+      console.log((true).constructor.toString());//function Boolean(){[native code]}
+      //console.log((undefined).constructor.toString());//报错
+      //console.log((null).constructor.toString());//报错
+      console.log(({name: "jerry"}).constructor.toString());//function Object(){[native code]}
+      console.log((function(){}).constructor.toString());//function Function(){[native code]}
+      console.log(([]).constructor.toString());//function Array(){[native code]}
+      console.log((new Date).constructor.toString());//function Date(){[native code]}
+      console.log((/\d/).constructor.toString());//function RegExp(){[native code]}
+      function Person(){};
+      console.log((new Person).constructor.toString());//function Person(){}
+      //=======================================================================//
+      function type(obj){
+        var temp = obj.constructor.toString();
+        return temp.replace(/^function (\w+)\(\).+$/,'$1');
+      }
+
+      console.log(type("jerry"));//"string"
+      console.log(type(12));//"number"
+      console.log(type(true));//"boolean"
+      //console.log(type(undefined));//错误
+      //console.log(type(null));//错误
+      console.log(type({name: "jerry"}));//"object"
+      console.log(type(function(){}));//"function"
+      console.log(type([]));//"array"
+      console.log(type(new Date));//"date"
+      console.log(type(/\d/));//"regexp"
+      function Person(){};
+      console.log(type(new Person));//"person"
+
+    </script>
+  </body>
+</html>

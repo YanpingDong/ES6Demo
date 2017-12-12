@@ -1,0 +1,24 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>typeof demo</title>
+	</head>
+  <body>
+    <script>
+      console.log(typeof "jerry");//"string"
+      console.log(typeof 12);//"number"
+      console.log(typeof true);//"boolean"
+      console.log(typeof undefined);//"undefined"
+      console.log(typeof null);//"object"
+      console.log(typeof {name: "jerry"});//"object"
+      console.log(typeof function(){});//"function"
+      console.log(typeof []);//"object"
+      console.log(typeof new Date);//"object"
+      console.log(typeof /\d/);//"object"
+      function Person(){};
+      console.log(typeof new Person);//"object"
+    </script>
+  </body>
+</html>

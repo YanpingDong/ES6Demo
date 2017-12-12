@@ -1,0 +1,27 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>instanceof demo</title>
+	</head>
+  <body>
+    <script>
+    
+      console.log("jerry" instanceof String);//false
+      console.log(12 instanceof Number);//false
+      console.log(true instanceof Boolean);//false
+      //console.log(undefined instanceof Undefined);//报错
+      //console.log(null instanceof Null);//报错
+      console.log({name: "jerry"} instanceof Object);//true
+      console.log(function(){} instanceof Function);//true
+      console.log([] instanceof Array);//true
+      console.log(new Date instanceof Date);//true
+      console.log(/\d/ instanceof RegExp);//true
+      function Person(){};
+      console.log(new Person instanceof Person);//true
+      console.log(new Person instanceof Object);//true
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>object proto toString demo</title>
+	</head>
+  <body>
+    <script>
+      console.log(Object.prototype.toString.call("jerry"));//[object String]
+      console.log(Object.prototype.toString.call(12));//[object Number]
+      console.log(Object.prototype.toString.call(true));//[object Boolean]
+      console.log(Object.prototype.toString.call(undefined));//[object Undefined]
+      console.log(Object.prototype.toString.call(null));//[object Null]
+      console.log(Object.prototype.toString.call({name: "jerry"}));//[object Object]
+      console.log(Object.prototype.toString.call(function(){}));//[object Function]
+      console.log(Object.prototype.toString.call([]));//[object Array]
+      console.log(Object.prototype.toString.call(new Date));//[object Date]
+      console.log(Object.prototype.toString.call(/\d/));//[object RegExp]
+      function Person(){};
+      console.log(Object.prototype.toString.call(new Person));//[object Object]
+
+      //=======================================================================//
+      function type(obj){
+      　　return Object.prototype.toString.call(obj).slice(8,-1).toLowerCase();
+      }
+
+      console.log(type("jerry"));//"string"
+      console.log(type(12));//"number"
+      console.log(type(true));//"boolean"
+      console.log(type(undefined));//"undefined"
+      console.log(type(null));//"null"
+      console.log(type({name: "jerry"}));//"object"
+      console.log(type(function(){}));//"function"
+      console.log(type([]));//"array"
+      console.log(type(new Date));//"date"
+      console.log(type(/\d/));//"regexp"
+      function Person(){};
+      console.log(type(new Person));//"object"
+    </script>
+  </body>
+</html>
