@@ -65,7 +65,7 @@ foo1.boo.apply(window); // this is window.
 
 　　运行控台输出：
 
-![this示例程序输出](pic/thiDemoOutput.png)
+![this示例程序输出](pic/thisDemoOutput.png)
 
 代码示例见 [ThisDemo](thisDemo.html)
 
@@ -247,4 +247,56 @@ listObj.do2();
 
 [Demo Code](differentDemo.html)
 
-　　区别2：“this”与“prototype”定义的另一个不同点是属性的占用空间不同。使用“this”关键字，示例初始化时为每个实例开辟构造方法所包含的所有属性、方法所需的空间，而使用“prototype”定义，由于“prototype”实际上是指向父级的一种引用，仅仅是个数据的副本，因此在初始化及存储上都比“this”节约资源。
+　　区别2：当访问对象的属性或者方法是，将按照搜索原型链prototype chain的规则进行。首先查找自身的静态属性、方法，继而查找构造上下文的可访问属性、方法，最后查找构造的原型链。
+
+```
+function Test() {
+   this.func = function() {
+     alert("defined by this");
+   };
+}
+
+Test.prototype.func = function() {
+   alert("defined by prototype");
+};
+
+var _o = new Test();
+_o.func(); //输出“defined by this”
+```
+[Demo Code](differentDemo1.html)
+
+　　区别3：“this”与“prototype”定义的另一个不同点是属性的占用空间不同。使用“this”关键字，示例初始化时为每个实例开辟构造方法所包含的所有属性、方法所需的空间，而使用“prototype”定义，由于“prototype”实际上是指向父级的一种引用，仅仅是个数据的副本，因此在初始化及存储上都比“this”节约资源。
+
+# 原型链
+
+　　由于_proto_是任何对象都有的属性，而JS里万物皆对象，所以会形成一个_proto_链条，当JS引擎查找对象的属性和方法时，先查找对象本身是否存在该属性或方法，如果不存在，会在原型链上查找，但不会查找自身的prototype。
+
+　　按上所述，this是给上下文环境即自身添加属性或方法，而prototype是给函数添加属性和方法，优先级低于this添加的。上面区别2中的DEMO已经证明了该点。
+
+　　\_proto\_属性指向实例对象的构造函数的原型，理解起来就如下：
+
+```
+function Person(){};
+var p = new Person();
+console.log(p.__proto__ === Person.prototype)//true
+```
+
+　　所以如下代码码的原形链为：a.\_proto\_=A.prototype; A.prototype.\_proto\_=Object.prototype; Object.prototype.\_proto\_=null
+
+```
+var A = function(){};
+var a = new A();
+console.log(a.__proto__); //A {}（即构造器function A 的原型对象）
+console.log(a.__proto__.__proto__); //Object {}（即构造器function Object 的原型对象）
+console.log(a.__proto__.__proto__.__proto__); //null
+```
+
+　　[Demo Code](differentDemo1.html)
+
+　　Demo输出为
+
+![](pic/protoLinkDemoOutput.png)
+
+　　proto链如下图所示：
+
+![](pic/protoLink.png)
