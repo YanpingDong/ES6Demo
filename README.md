@@ -227,9 +227,13 @@ react-router:https://reacttraining.com/react-router/web/example/basic
 
 　　和JS相关的一些知识，个人觉得需要知道的，或者我个人在这方面比较缺少的。比如函数的返回入参、创建函数的过程实际是创建了一个同名的变量、ES中对类是否有定义、this功能、ESCA中的做用域概念等
 
-# [This Constructor prototype](JSThisConstructorPrototype)
+# [This Constructor prototype三者区别](JSThisConstructorPrototype)
 
 　　详细说明this constructor 和 prototype是什么以及他们之间的关系。
+
+# [JS中四种类型判断方法](TypeJudgement)
+
+　　列举四种JS类型判断方法。程序在浏览器中运行后可以直接用F12查看console页看结果。
 
 # [ECMA class](ECMAClass)
 
