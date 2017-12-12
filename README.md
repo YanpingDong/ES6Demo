@@ -141,6 +141,14 @@ index.html文件：
 </style>
 ```
 
+- 导入式：在内嵌式中用@import进行导入
+
+```
+<style>
+  @import "import.css path/import.css"
+</style>
+```
+
 - 外链式：和JS外链一样，从外部文件引入
 
 ```
@@ -153,13 +161,7 @@ index.HTML
 <link rel="stylesheet" href="import.css path/import.css">
 ```
 
-- 导入式：在内嵌式中用@import进行导入
-
-```
-<style>
-  @import "import.css path/import.css"
-</style>
-```
+>　　链接式和导入式的区别：
 
 > 　　使用链接式的css是客户端浏览你的网页时先将外部的CSS文件加载到网页当中，然后再进行编译显示，所以这种情况下显示出来的网页跟我们预期的效果一样，即使网速再慢也是一样的效果。而使用@import导入的CSS就不同了，客户端在浏览网页时是先将html的结构呈现出来，再把外部的CSS文件加载到网页当中，当然最终的效果也是跟前者是一样的，只是当网速较慢时会出现先显示没有CSS统一布局时的html网页，这样就会给阅读者很不好的感觉。这也是现在大部分网站的CSS都采用链接方式的最主要原因;
 

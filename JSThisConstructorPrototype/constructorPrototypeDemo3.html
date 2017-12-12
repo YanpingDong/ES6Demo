@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <script type="text/javascript">
+
+      function Person(name) {
+        this.name = name;
+      };
+      Person.prototype = {
+        constructor:Person,//指定constructor
+        getName: function() {
+          return this.name;
+        }
+      };
+      var p = new Person("haorooms");
+      console.log(p.constructor === Person); // true 代表指向了Person函数
+      console.log(Person.prototype.constructor === Person); // true 代表指向了Person函数
+      console.log(p.constructor.prototype.constructor === Person); // true 代表指向了Person函数
+
+    </script>
+
+  </body>
+
+</html>

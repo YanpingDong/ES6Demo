@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <script type="text/javascript">
+
+      function Person(name, age){
+          this.name = name;
+          this.age = age;
+      }
+      Person.prototype.getName = function(){
+          alert(this.name);
+      }
+      Person.prototype.getAge = function(){
+          alert(this.age);
+      }
+      var obj = new Person();
+      alert(obj.constructor == Person);// true 表明指向的是Person函数
+
+    </script>
+
+  </body>
+
+</html>

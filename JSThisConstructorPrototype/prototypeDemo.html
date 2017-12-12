@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <script type="text/javascript">
+
+    function Person(name, age){
+          this.name = name;
+          this.age = age;
+      }
+
+      //是函数就有prototype属性, 这个属性也是一个对象
+      Person.prototype = {
+          getName: function(){ //所有对象实例都共享
+              return this.name;
+          },
+          getAge: function(){//所有对象实例都共享
+              return this.age;
+          }
+      }
+
+      var obj = new Person('tom', 23);
+      alert(obj.getName()); //'tom'
+      var obj2 = new Person('jack', 23);
+      alert(obj2.getName()); //'jack'
+      obj.getName == obj2.getName; //true, 所有实例共享
+      alert(Person.prototype.getName()); //当做普通函数属性, 根据this定义, 此时this指向的是Person.prototype, 所以返回undefined
+
+    </script>
+
+  </body>
+
+</html>

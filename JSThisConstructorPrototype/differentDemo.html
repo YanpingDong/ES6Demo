@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <script type="text/javascript">
+
+    function ListCommon2(afirst)
+    {
+       var first = afirst;
+       this.do1 = function ()
+       {
+         alert("first do"+first);
+       };
+
+    }
+
+    ListCommon2.prototype.do2=function()
+    {
+       alert("first do"+first);//会出错，不能访问first, Uncaught ReferenceError: first is not defined
+       //this.do1();  // 通过调用 都do1()方法，间接的来访问 first属性。
+    }
+
+    var listObj = new ListCommon2('test');
+    listObj.do1();
+    listObj.do2();
+
+    </script>
+
+  </body>
+
+</html>

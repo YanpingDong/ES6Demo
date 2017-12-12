@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <script type="text/javascript">
+
+      function Person(name) {
+        this.name = name;
+      };
+      Person.prototype = {
+        getName: function() {
+          return this.name;
+        }
+      };
+      var p = new Person("haorooms");
+      console.log(p.constructor === Object); // true 表明指向了Object
+      console.log(Person.prototype.constructor === Object); // true 表明指向了Object
+      console.log(p.constructor.prototype.constructor === Object); // true 表明指向了Object
+
+    </script>
+
+  </body>
+
+</html>

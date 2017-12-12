@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <script type="text/javascript">
+
+      function Person(name, age){
+          this.name = name;
+          this.age = age;
+      }
+      Person.prototype = {
+          getName: function(){
+             alert(this.name);
+          },
+          getAge: function(){
+             alert(this.age);
+          }
+      }
+      var obj = new Person();
+      alert(obj.constructor == Person);// false 表明现在不再指向Person函数
+
+    </script>
+
+  </body>
+
+</html>
