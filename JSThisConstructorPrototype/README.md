@@ -300,3 +300,22 @@ console.log(a.__proto__.__proto__.__proto__); //null
 　　proto链如下图所示：
 
 ![](pic/protoLink.png)
+
+# instanceof究竟是运算什么的？
+
+　　我曾经简单理解instanceof只是检测一个对象是否是另个对象new出来的实例（例如var a = new Object()，a instanceof Object返回true），但实际instanceof的运算规则上比这个更复杂。
+
+　　实际流程如下：
+
+```
+//假设instanceof运算符左边是L，右边是R
+L instanceof R
+
+//instanceof运算时，通过判断L的原型链上是否存在R.prototype
+L.__proto__.__proto__ ..... === R.prototype ？
+//如果存在返回true 否则返回false
+```
+
+注意：instanceof运算时会递归查找L的原型链，即L.__proto__.__proto__.__proto__.__proto__...直到找到了或者找到顶层为止。
+
+　　所以一句话理解instanceof的运算规则为：instanceof检测左侧的__proto__原型链上，是否存在右侧的prototype原型。
