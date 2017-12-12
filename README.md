@@ -194,7 +194,7 @@ react-router:https://reacttraining.com/react-router/web/example/basic
 
 　　Emmet: (前身为 Zen Coding) 是一个能大幅度提高前端开发效率的工具，能够实现 HTML、CSS 的快速编写。更多详细的使用可以度娘。
 
-　　MarkDown: windows下使用快捷键 ctrl + shift + p，打开命令输入框；输入 markdown preview toggle(可以偷懒只输入mdpt，支持模糊匹配)
+　　MarkDown: windows下使用快捷键 ctrl + shift + p，打开命令输入框；输入 markdown preview toggle(可以偷懒只输入mdpt，支持模糊匹配)。如果没有热键冲突可以使用ctrl + shift + m
 
 # 著名的变量命名规则
 

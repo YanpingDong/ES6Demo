@@ -24,7 +24,7 @@ function sayHi(sMessage) {
 
 > 与其他程序设计语言不同，ECMAScript 不会验证传递给函数的参数个数是否等于函数定义的参数个数。开发者定义的函数都可以接受任意个数的参数（根据 Netscape 的文档，最多可接受 255 个），而不会引发任何错误。任何遗漏的参数都会以 undefined 传递给函数，多余的函数将忽略。
 
-也可以利用arguments来模拟函数重载，示例: [模拟函数重载](SimpleDemo\overLoadSimulationDemo.html)
+也可以利用arguments来模拟函数重载，示例: [模拟函数重载](overLoadSimulationDemo.html)
 
 ## 函数名只是变量
 
