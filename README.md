@@ -186,6 +186,24 @@ index.HTML
 
 react-router:https://reacttraining.com/react-router/web/example/basic
 
+# [This Constructor prototype三者区别](JSThisConstructorPrototype)
+
+　　详细说明this constructor 和 prototype是什么以及他们之间的关系。
+
+# [JS中四种类型判断方法](TypeJudgement)
+
+　　列举四种JS类型判断方法。程序在浏览器中运行后可以直接用F12查看console页看结果。
+
+# [ECMA class](ECMAClass)
+
+　　解释ECMA中类的定义（其实其只有对象的定义无类的概念），如何实现继承等。
+
+　　如果想要更多的细节可以参见： [ECMA W3C School 教程](https://www.w3cschool.cn/pro_js_object_defining.html)
+
+# [JS零碎知识](JSFragmentaryKnowledge)
+
+　　和JS相关的一些知识，个人觉得需要知道的，或者我个人在这方面比较缺少的。比如函数的返回入参、创建函数的过程实际是创建了一个同名的变量、ES中对类是否有定义、this功能、ESCA中的做用域概念等
+
 # Atom使用的插件
 
 　　可以在Install Packages/Themes中安装需要的插件，方便编辑和提示，比如将HTML代码直接在默认浏览器中显示看效果，或者代码补全。以下是在学习过程中使用到的一些插件。
@@ -222,21 +240,3 @@ react-router:https://reacttraining.com/react-router/web/example/basic
 |正则表达式|re	|rePattern|
 |字符串|s|sValue|
 |变型(可以是任何类型) |v	|vValue|
-
-# [JS零碎知识](JSFragmentaryKnowledge)
-
-　　和JS相关的一些知识，个人觉得需要知道的，或者我个人在这方面比较缺少的。比如函数的返回入参、创建函数的过程实际是创建了一个同名的变量、ES中对类是否有定义、this功能、ESCA中的做用域概念等
-
-# [This Constructor prototype三者区别](JSThisConstructorPrototype)
-
-　　详细说明this constructor 和 prototype是什么以及他们之间的关系。
-
-# [JS中四种类型判断方法](TypeJudgement)
-
-　　列举四种JS类型判断方法。程序在浏览器中运行后可以直接用F12查看console页看结果。
-
-# [ECMA class](ECMAClass)
-
-　　解释ECMA中类的定义（其实其只有对象的定义无类的概念），如何实现继承等。
-
-　　如果想要更多的细节可以参见： [ECMA W3C School 教程](https://www.w3cschool.cn/pro_js_object_defining.html)
