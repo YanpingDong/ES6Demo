@@ -1,0 +1,95 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>alert demo</title>
+	</head>
+  <body>
+    <script>
+      function myBrowser(){
+        var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+
+        if (userAgent.indexOf("Opera") > -1) {
+            return "Opera"
+        }; //判断是否Opera浏览器
+        if (userAgent.indexOf("Firefox") > -1) {
+            return "FF";
+        } //判断是否Firefox浏览器
+        if (userAgent.indexOf("Chrome") > -1){
+            return "Chrome";
+        }
+        if (userAgent.indexOf("Safari") > -1) {
+            return "Safari";
+        } //判断是否Safari浏览器
+        if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1) {
+             var IE5 = IE55 = IE6 = IE7 = IE8 = false;
+             var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+             reIE.test(userAgent);
+             var fIEVersion = parseFloat(RegExp["$1"]);
+             IE55 = fIEVersion == 5.5;
+             IE6 = fIEVersion == 6.0;
+             IE7 = fIEVersion == 7.0;
+             IE8 = fIEVersion == 8.0;
+             if (IE55) {
+                 return "IE55";
+             }
+             if (IE6) {
+                 return "IE6";
+             }
+             if (IE7) {
+                 return "IE7";
+             }
+             if (IE8) {
+                 return "IE8";
+             }
+          }; //判断是否IE浏览器
+          if (userAgent.indexOf('Trident') > -1 && userAgent.indexOf("rv:11.0") > -1) {
+              return "IE11";
+          }
+      }
+      //以下是调用上面的函数
+      var mb = myBrowser();
+      if ("IE55" == mb) {
+        alert("我是 IE55");
+        console.log("我是 IE55");
+      }
+      if ("IE" == mb) {
+        alert("我是 IE");
+        console.log("我是 IE");
+      }
+      if ("IE6" == mb) {
+        alert("我是 IE6");
+        console.log("我是 IE6");
+      }
+      if ("IE7" == mb) {
+        alert("我是 IE7");
+        console.log("我是 IE7");
+      }
+      if ("IE8" == mb) {
+        alert("我是 IE7");
+        console.log("我是 IE8");
+      }
+      if ("IE11" == mb){
+        alert("我是 IE11");
+        console.log("我是 IE11");
+      }
+      if ("FF" == mb) {
+        alert("我是 Firefox");
+        console.log("我是 Firefox");
+      }
+      if ("Chrome" == mb) {
+        alert("我是 Chrome");
+        console.log("我是 Chrome");
+      }
+      if ("Opera" == mb) {
+        alert("我是 Opera");
+        console.log("我是 Opera");
+      }
+      if ("Safari" == mb) {
+        alert("我是 Safari");
+        console.log("我是 Safari");
+      }
+    </script>
+  </body>
+</html>

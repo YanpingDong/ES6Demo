@@ -38,6 +38,8 @@
 > 3. window.addEventListenner('load', function(){}, false), 但这咱方式不兼容IE 6 7 8.
 > 4. IE 6 7 8下 window.attachEvent('onreadystatechange',function(){})
 
+[浏览器判断方法](JudgeBrowserAndVersion)
+
 # DOM
 
 　　文档对象模型（Document Object Model，简称DOM），是 HTML 和 XML 的应用程序接口（API）。DOM 将把整个页面规划成由节点层级构成的文档。HTML 或 XML 页面的每个部分都是一个节点的衍生物。即用来表示文档中对象的标准模型就称为DOM。HTML的DOM如下图所示：
