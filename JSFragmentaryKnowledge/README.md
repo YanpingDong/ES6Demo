@@ -58,6 +58,8 @@ function doAdd(iNum) {
 doAdd(10);	//输出 "20"
 ```
 
+[Demo Code](functionIsVariableDemo.html)
+
 　　如你所知，第二个函数重载了第一个函数，使 doAdd(10) 输出了 "20"，而不是 "30"。
 　　如果以下面的形式重写该代码块，这个概念就清楚了：
 
@@ -66,6 +68,8 @@ var doAdd = new Function("iNum", "alert(iNum + 20)");
 var doAdd = new Function("iNum", "alert(iNum + 10)");
 doAdd(10);
 ```
+
+[Demo Code](functionIsVariableDemo1.html)
 
 　　请观察这段代码，很显然，doAdd 的值被改成了指向不同对象的指针。**函数名只是指向函数对象的引用值**，行为就像其他对象一样。甚至可以使两个变量指向同一个函数：
 
@@ -91,6 +95,7 @@ callAnotherFunc(doAdd, 10);	//输出 "20"
 ## 对象
 
 　　ECMA-262 把对象（object）定义为“属性的无序集合，每个属性存放一个原始值、对象或函数”。严格来说，这意味着对象是无特定顺序的值的数组。
+
 　　尽管 ECMAScript 如此定义对象，但它更通用的定义是基于代码的名词（人、地点或事物）的表示。
 
 ## 面向对象语言的要求
@@ -135,11 +140,54 @@ oObject = null;
 
 ## 内置对象
 
-　　ECMA-262 把内置对象（built-in object）定义为“由 ECMAScript 实现提供的、独立于宿主环境的所有对象，在 ECMAScript 程序开始执行时出现”。这意味着开发者不必明确实例化内置对象，它已被实例化了。ECMA-262 只定义了两个内置对象，即 Global 和 Math （它们也是本地对象，根据定义，每个内置对象都是本地对象）。
+　　ECMA-262 把内置对象（built-in object）定义为“由 ECMAScript 实现提供的、独立于宿主环境的所有对象，在 ECMAScript 程序开始执行时出现”。**这意味着开发者不必明确实例化内置对象，它已被实例化了**。ECMA-262 只定义了两个内置对象，即 Global 和 Math （它们也是本地对象，根据定义，每个内置对象都是本地对象）。
 
 ## 宿主对象
 
-　　所有非本地对象都是宿主对象（host object），即由 ECMAScript 实现的宿主环境提供的对象。所有 BOM 和 DOM 对象都是宿主对象。
+　　所有非本地对象都是宿主对象（host object），**即由 ECMAScript 实现的宿主环境提供的对象**。所有 BOM 和 DOM 对象都是宿主对象。
+
+## JavaScript对象的创建方式
+
+在JavaScript中，创建对象的方式包括两种：对象字面量和使用new表达式。对象字面量是一种灵活方便的书写方式，例如：
+
+var o1 = {
+    p:”I’m in Object literal”,
+    alertP:function(){
+        alert(this.p);
+    }
+}
+
+
+这样，就用对象字面量创建了一个对象o1，它具有一个成员变量p以及一个成员方法alertP。这种写法不需要定义构造函数，因此不在本文的讨论范围之内。这种写法的缺点是，每创建一个新的对象都需要写出完整的定义语句，不便于创建大量相同类型的对象，不利于使用继承等高级特性。
+
+new表达式是配合构造函数使用的，例如new String(“a string”)，调用内置的String函数构造了一个字符串对象。下面我们用构造函数的方式来重新创建一个实现同样功能的对象，首先是定义构造函数，然后是调用new表达式：
+
+function CO(){
+    this.p = “I’m in constructed object”;
+    this.alertP = function(){
+        alert(this.p);
+    }
+}
+var o2 = newCO();
+
+
+那么，在使用new操作符来调用一个构造函数的时候，发生了什么呢？其实很简单，就发生了四件事：
+
+
+var obj  ={};
+obj.__proto__ = CO.prototype;
+CO.call(obj);
+return obj;
+
+
+第一行，创建一个空对象obj。
+
+第二行，将这个空对象的__proto__成员指向了构造函数对象的prototype成员对象，这是最关键的一步，具体细节将在下文描述。
+
+第三行，将构造函数的作用域赋给新对象，因此CA函数中的this指向新对象obj，然后再调用CO函数。于是我们就给obj对象赋值了一个成员变量p，这个成员变量的值是” I’min constructed object”。
+
+第四行，返回新对象obj。当构造函数里包含返回语句时情况比较特殊，这种情况会在下文中说到。
+https://www.cnblogs.com/wangyingblog/p/5583825.html
 
 ## ECMAScript 只有公用作用域
 
@@ -200,11 +248,11 @@ oCar.showColor = function() {
 oCar.showColor();		//输出 "red"
 ```
 
-　　即this指代的什么是根据 **运行时此函数在什么对象上被调用（或运行时此函数在什么上下文环境中视调用）**， 如果在全局作用范围内使用this，则指代当前页面对象window； 如果在函数中使用this则是调用该函数的对象。
+　　即this指代的什么是根据 **运行时此函数在什么对象上被调用（或运行时此函数在什么上下文环境中被调用）**， 如果在全局作用范围内使用this，则指代当前页面对象window； 如果在函数中使用this则是调用该函数的对象。
 
 **使用 this 的原因**
 
-　　为什么使用 this 呢？因为在实例化对象时，总是不能确定开发者会使用什么样的变量名。使用 this，即可在任何多个地方重用同一个函数。即不同的对象调用同样的方法可以用this传入不同的状态。请思考下面的例子：
+　　为什么使用 this 呢？因为在实例化对象时，总是不能确定开发者会使用什么样的变量名。*使用 this，即可在任何多个地方重用同一个函数。即不同的对象调用同样的方法可以用this传入不同的状态*。请思考下面的例子：
 
 ```
 function showColor() {
@@ -223,6 +271,8 @@ oCar1.showColor();		//输出 "red"
 oCar2.showColor();		//输出 "blue"
 ```
 
+[Demo Code](usingThisReasonDemo.html)
+
 　　在上面的代码中，首先用 this 定义函数 showColor()，然后创建两个对象（oCar1 和 oCar2），一个对象的 color 属性被设置为 "red"，另一个对象的 color 属性被设置为 "blue"。两个对象都被赋予了属性 showColor，指向原始的 showColor () 函数（注意这里不存在命名问题，因为一个是全局函数，而另一个是对象的属性）。调用每个对象的 showColor()，oCar1 输出是 "red"，而 oCar2 的输出是 "blue"。这是因为调用 oCar1.showColor() 时，函数中的 this 关键字等于 oCar1。调用 oCar2.showColor() 时，函数中的 this 关键字等于 oCar2。
 
 　　注意，引用对象的属性时，必须使用 this 关键字。例如，如果采用下面的代码，showColor() 方法不能运行：
@@ -234,3 +284,12 @@ function showColor() {
 ```
 
 　　**如果不用对象或 this 关键字引用变量，ECMAScript 就会把它看作局部变量或全局变量。然后该函数将查找名为 color 的局部或全局变量，但是不会找到。结果如何呢？该函数将在警告中显示 "null"。**
+
+# 转换其它类型转换为Boolean
+
+　　用Boolean()方法，或者 ‘!!’。JS中只有下列几个值会成为false: 0， NaN， 空了符串，  null， undefined
+
+```
+Boolean(1) //true
+!!1 //true
+```
