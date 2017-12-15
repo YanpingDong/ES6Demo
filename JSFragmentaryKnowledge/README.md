@@ -307,3 +307,10 @@ Boolean(1) //true
 　　isNaN('123') --> false 当使用isNaN检测值的时候，检测值不是number类型时，浏览器会默认的先把值转为number类型然后再判断。
 
 　　所以综合两个使用方案isNaN([])为false. 因为[].toString()为'',而Number('')为0, 0不是NaN。
+
+　　一个有趣的示例：
+
+```
+NaN==NaN --> 为false
+typeof NaN --->（字符串）'number'
+```
