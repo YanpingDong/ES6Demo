@@ -124,6 +124,8 @@ oObject = null;
 
 　　每用完一个对象后，就将其废除，来释放内存，这是个好习惯。这样还确保不再使用已经不能访问的对象，从而防止程序设计错误的出现。此外，旧的浏览器（如 IE/MAC）没有全面的无用存储单元收集程序，所以在卸载页面时，对象可能不能被正确销毁。废除对象和它的所有特性是确保内存使用正确的最好方法。
 
+　　*也可以用delete直接删除对象中的属性，比如delete oObject.someProperty*
+
 **注意：废除对象的所有引用时要当心。如果一个对象有两个或更多引用，则要正确废除该对象，必须将其所有引用都设置为 null。**
 
 ## 早绑定和晚绑定
@@ -285,6 +287,8 @@ function showColor() {
 
 　　**如果不用对象或 this 关键字引用变量，ECMAScript 就会把它看作局部变量或全局变量。然后该函数将查找名为 color 的局部或全局变量，但是不会找到。结果如何呢？该函数将在警告中显示 "null"。**
 
+this constructor prototype三者区别见#[This Constructor prototype三者区别](JSThisConstructorPrototype)
+
 # 转换其它类型转换为Boolean
 
 　　用Boolean()方法，或者 ‘!!’。JS中只有下列几个值会成为false: 0， NaN， 空了符串，  null， undefined
@@ -293,3 +297,13 @@ function showColor() {
 Boolean(1) //true
 !!1 //true
 ```
+
+# isNaN number变量
+
+　　Number('123x') -->NaN 只有所有字符都是有效数字的时候才会是数据，否则都是NaN;另外对于引用数所类型先用toString字符串然后再转为number。
+
+　　几个特殊值Number（true）为1， Number（flase）为0, Number(null)o为0， Number(undefined)为NaN，Number('')为0
+
+　　isNaN('123') --> false 当使用isNaN检测值的时候，检测值不是number类型时，浏览器会默认的先把值转为number类型然后再判断。
+
+　　所以综合两个使用方案isNaN([])为false. 因为[].toString()为'',而Number('')为0, 0不是NaN。

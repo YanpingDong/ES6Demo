@@ -198,6 +198,14 @@ react-router:https://reacttraining.com/react-router/web/example/basic
 
 　　列举四种JS类型判断方法。程序在浏览器中运行后可以直接用F12查看console页看结果。
 
+# [js的变量提升和函数提升](JSHoisting)
+
+　　在ES6之前，JavaScript没有块级作用域(一对花括号{}即为一个块级作用域)，只有全局作用域和函数作用域。变量提升即将变量声明提升到它所在作用域的最开始的部分。
+
+　　*块，就像if语句，并不会创建一个新的作用域。只有函数才会创建新的作用域。*
+
+　　[原文地址](https://www.cnblogs.com/kawask/p/6225317.html)
+
 # [ECMA class](ECMAClass)
 
 　　解释ECMA中类的定义（其实其只有对象的定义无类的概念），如何实现继承等。

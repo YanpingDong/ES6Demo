@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <body>
+
+  <script type="text/javascript">
+    console.log(global); // undefined
+    var global = 'global';
+    console.log(global); // global
+
+    function fn () {
+    　　console.log(a); // undefined
+    　　var a = 'aaa';
+    　　console.log(a); // aaa
+    }
+    fn();
+  </script>
+
+</body>
+</html>
