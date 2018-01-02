@@ -18,11 +18,11 @@
     value:'女',
     enumerable:false
     });
-    for(var i in b){
+    for(var i in b){  //遍历所有可枚举的类型
     　　console.log(i);//结果["name","age","c","look"]
     }
-    console.log(Object.keys(b));//结果["name","age","c"]
-    console.log(Object.getOwnPropertyNames(b));//结果["name", "age", "c", "sex"]
+    console.log(Object.keys(b));//结果["name","age","c"],只遍历自身可枚举
+    console.log(Object.getOwnPropertyNames(b));//结果["name", "age", "c", "sex"],自身所有属性（不论是否是可枚举的）,不包括原型链上面的
   </script>
 
   <p> js代码输出结果在console中可见 </p>

@@ -242,11 +242,14 @@ console.log(obj1.name); // 输出我有名字了，说明这两个引用数据�
 
 　　所以在JS编程过程中要特别注意所使用的对象是基本类型还是引用类型，要不然会出现本想改变一个值，但没有发生预想的变化，而不想改变一个值确因为使用引用的问题使的其发生改变
 
+　　如下示例，为了改变Ｐ元素的背景成blue，需要将元素的style.color属性设置成blue．可以使用变量保存"元素.style"也可以保存＂元素.style.color＂，但最终是否能达到预期就要看变量是引用数据还是基本数据．
+
 [Demo Code](SimpleDemo\primaryAndReferenceDataTypeDemo.html)
 
 Demo dir 命令控台输出如下图所示：
 
 ![](pic\primaryAndReferenceDataType.png)
+
 
 # [JS零碎知识](JSFragmentaryKnowledge)
 

@@ -314,3 +314,17 @@ Boolean(1) //true
 NaN==NaN --> 为false
 typeof NaN --->（字符串）'number'
 ```
+
+# 枚举类型
+
+　　在JavaScript中，对象的属性分为可枚举和不可枚举之分，它们是由属性的enumerable值决定的。可枚举性决定了这个属性能否被for…in查找遍历到。
+
+　　js中基本包装类型的原型属性是不可枚举的，如Object, Array, Number等
+
+　　for...in循环是 遍历对象的每一个可枚举属性,包括原型链上面的可枚举属性,而Object.keys()只是遍历自身的可枚举属性,不可以遍历原型链上的可枚举属性. 这是for...in和Object.keys()的主要区别．
+
+　　而Object.getOwnPropertyNames()则是遍历自身所有属性（不论是否是可枚举的）,不包括原型链上面的.
+
+　　Object对象的propertyIsEnumerable()方法可以判断此对象是否包含某个属性，并且这个属性是否可枚举。需要注意的是：如果判断的属性存在于Object对象的原型内，不管它是否可枚举都会返回false。
+
+[Demo code](enumerablePropertyDemo.html)
