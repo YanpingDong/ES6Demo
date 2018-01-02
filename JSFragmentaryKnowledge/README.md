@@ -291,7 +291,7 @@ this constructor prototype三者区别见#[This Constructor prototype三者区�
 
 # 转换其它类型转换为Boolean
 
-　　用Boolean()方法，或者 ‘!!’。JS中只有下列几个值会成为false: 0， NaN， 空了符串，  null， undefined
+　　用Boolean()方法，或者 ‘!!’。JS中只有下列几个值会成为false: 0， NaN， 空字符串，  null， undefined
 
 ```
 Boolean(1) //true
