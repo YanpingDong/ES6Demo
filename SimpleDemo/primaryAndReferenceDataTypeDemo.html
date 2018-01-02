@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="p1">Hello World!</p>
+<p id="p2">Hello World!</p>
+
+<script>
+  var p1StyleColor = document.getElementById("p2").style.color;
+  p1StyleColor = "blue";
+  var p2Style = document.getElementById("p2").style;
+  p2Style.color="blue"
+
+</script>
+
+  <p>style.color中color存的是一个基本数据类型，所以p1StyleColor直接复制了该值，操做p1StyleColor的时候并不影响原有值，而p2Style 保存的是style变量，这个值是引用类型数据，所以改变p2Style会影响style中变量的值。通过在浏览器控台使用dir(p2Style)和dir(p1StyleColor)可以很明显的发现一个是Object一个是String</p>
+
+</body>
+</html>

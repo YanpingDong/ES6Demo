@@ -212,6 +212,42 @@ react-router:https://reacttraining.com/react-router/web/example/basic
 
 　　如果想要更多的细节可以参见： [ECMA W3C School 教程](https://www.w3cschool.cn/pro_js_object_defining.html)
 
+# 基本数据类型和引用数所类型
+
+　　ECMAScript包括两个不同类型的值：基本数据类型和引用数据类型。
+
+　　基本数据类型指的是简单的数据段，引用数据类型指的是有多个值构成的对象。
+
+　　*当我们把变量赋值给一个变量时，解析器首先要确认的就是这个值是基本类型值还是引用类型值。*
+
+　　常见的基本数据类型：Number、String 、Boolean、Null和Undefined。基本数据类型是按值访问的，因为可以直接操作保存在变量中的实际值。示例：
+
+```
+var a = 10;
+var b = a;
+b = 20;
+console.log(a); // 10值
+```
+
+　　**b只是保存了a复制的一个副本。所以，b的改变，对a没有影响。**
+
+　　引用类型数据：是对象类型Object type，比如：Object 、Array 、Function 、Data等。javascript的引用数据类型是保存在**堆内存**中的对象。所以，引用类型数据在**栈内存**中保存的实际上是对象在**堆内存**中的引用地址。通过这个引用地址可以快速查找到保存中堆内存中的对象。
+
+```
+var obj1 = new Object();
+var obj2 = obj1;
+obj2.name = "我有名字了";
+console.log(obj1.name); // 输出我有名字了，说明这两个引用数据类型指向了同一个堆内存对象。
+```
+
+　　所以在JS编程过程中要特别注意所使用的对象是基本类型还是引用类型，要不然会出现本想改变一个值，但没有发生预想的变化，而不想改变一个值确因为使用引用的问题使的其发生改变
+
+[Demo Code](SimpleDemo\primaryAndReferenceDataTypeDemo.html)
+
+Demo dir 命令控台输出如下图所示：
+
+![](pic\primaryAndReferenceDataType.png)
+
 # [JS零碎知识](JSFragmentaryKnowledge)
 
 　　和JS相关的一些知识，个人觉得需要知道的，或者我个人在这方面比较缺少的。比如函数的返回入参、创建函数的过程实际是创建了一个同名的变量、ES中对类是否有定义、this功能、ESCA中的做用域概念等
