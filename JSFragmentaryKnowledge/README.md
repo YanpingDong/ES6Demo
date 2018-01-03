@@ -328,3 +328,25 @@ typeof NaN --->（字符串）'number'
 　　Object对象的propertyIsEnumerable()方法可以判断此对象是否包含某个属性，并且这个属性是否可枚举。需要注意的是：如果判断的属性存在于Object对象的原型内，不管它是否可枚举都会返回false。
 
 [Demo code](enumerablePropertyDemo.html)
+
+# '=='与'==='的主要区别
+
+　　'=='进行比较的时候，如果比较的两个数据类型不一样的时候，浏览器会默认转换为想同的类型，然后再比。而'==='不会做直接进行比较。
+
+　　对于引用数据类型只有空间地址相同比较才会为true。
+
+```
+var a={};
+var b=a;
+b==a; // true
+b===a; // true
+```
+
+　　==进行比较两边类数据类型不一样都会先转换成数字然后再进行比较，但是null和undefined除外,即这两个值和其它任何值都不相等，但两者==为ture。
+
+```
+[]=='' // 0==0 --> true
+[]==false //0==0 -->true
+
+null ==undefined //true
+```
