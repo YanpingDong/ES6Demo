@@ -251,7 +251,7 @@ Demo dir 命令控台输出如下图所示：
 ![](pic\primaryAndReferenceDataType.png)
 
 
-# [console常用调试命令]
+# [console常用调试命令](consolePart)
 
 　　本节说明了console的几大类命令，可以很方便的在控制台看输出信息，方便调试：
 
