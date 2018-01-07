@@ -263,6 +263,7 @@ Demo dir 命令控台输出如下图所示：
 6. 追踪函数的调用轨迹(trace)
 7. 计时功能(time,timeEnd)
 8. 性能分析(profile)
+9. 表格显示数据(table)
 
 
 
