@@ -6,6 +6,10 @@
     <title>console function demo</title>
 	</head>
   <body>
+    <div id="info">
+      <h3>info div</h3>
+      <p>need to print something</p>
+    </div>
     <script>
       // 1. display and placeholder
       console.log('hello');
@@ -27,6 +31,60 @@
       //3. object info
       var info={name:"myName", age:123};
       console.dir(info);
+
+      //4. show node content
+      var infoDiv = document.getElementById('info');
+      console.dirxml(infoDiv);
+
+      //5. judgment
+      var result = 1;
+      console.assert(result);
+      console.assert(result===2);
+
+      //6 invoking link
+      /*函数是如何被调用的，在其中加入console.trace()方法就可以了*/
+      function add(a,b){
+           console.trace();
+      　　　return a+b;
+      }
+      var x = add3(1,1);
+      function add3(a,b){return add2(a,b);}
+      function add2(a,b){return add1(a,b);}
+      function add1(a,b){return add(a,b);}
+
+      //7. timeing
+      console.time("控制台计时器一");
+   　 for(var i=0;i<1000;i++){
+   　　　　for(var j=0;j<1000;j++){}
+ 　　  }
+ 　　  console.timeEnd("控制台计时器一");
+
+      //8. performance analysis
+      function All(){
+        // alert(11);
+    　　 for(var i=0;i<10;i++)
+        {
+          funcA(1000);
+        }
+　　　　   funcB(10000);
+　　  }
+
+  　　function funcA(count){
+  　　　　for(var i=0;i<count;i++){}
+  　　}
+
+  　　function funcB(count){
+  　　　　for(var i=0;i<count;i++){}
+  　　}
+
+  　　console.profile('performance analysis');
+  　　All();
+  　　console.profileEnd('performance analysis');
+
+     //9. useing form to display data
+     var data = [{"name": "Bob","age": 8, "sex":{"a":1}},{"name": "Roce","age": 15, "sex":{"a":1}},{"name": "Blu","age": 10, "sex":{"a":1}}];
+     console.table(data);
     </script>
+
   </body>
 </html>
