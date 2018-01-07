@@ -115,6 +115,38 @@ console.timeEnd("控制台计时器一");
 
 　　性能分析（Profiler）就是分析程序各个部分的运行时间，找出瓶颈所在，使用的方法是console.profile()。
 
+在使用之前需要看控台上是否有profile这个选项页,如是没有可以按如下图获取(Chrome浏览器方式):
+
+![](profileFunctionShow.png)
+
+```
+function All()
+{
+  // alert(11);
+  for(var i=0;i<10;i++)
+  {
+      funcA(1000);
+  }
+  funcB(10000);
+}
+
+function funcA(count){
+　for(var i=0;i<count;i++){}
+}
+
+function funcB(count){
+　for(var i=0;i<count;i++){}
+}
+
+console.profile('performance analysis');
+All();
+console.profileEnd('performance analysis');
+```
+
+profile输出结果如下
+
+![](profileResult.png)
+
 ## 用表格展示json数据
 
 　　可以将如下json数据内容以表格的形式进行展示
