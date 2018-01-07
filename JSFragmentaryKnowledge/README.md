@@ -350,3 +350,32 @@ b===a; // true
 
 null ==undefined //true
 ```
+
+# 两种给页面元素设置属性区别
+
+　　给HTML页面元素,使用"xxx.自定义属性=vaule"和"xxx.setAttribute('自定义属性',value)"
+
+　　第一种是把当前操作元素做的一个元素当做一个普通对象,为其设置一个属性名,和页面中的HTML标签没有关系,第二种是把元素当做是特殊的元素对象来做处理,设置的自定义属性是和页面结构中的DOM元素映射在一起的.
+
+　　可以这样理解:setAttribute是DOM的一个操作,所以必然会影响到DOM结构,而直接"xxx.自定义属性=vaule"是js的一个语法,在JS的世界所有的东西(所以自然包括元素对像(DOM))都是对象,都可以直接用'.'的方式添加属性和方法．他们只是将属性添加到了不同位置，见后面图
+
+```
+<body>
+  <div id='boxId' class="box">1</div>
+
+  <script type="text/javascript">
+    var boxDiv = document.getElementById('boxId');
+    //don't affect DOM object
+    boxDiv.firstWay='firstWay';
+    boxDiv.setAttribute('secondWay',"secondWay");
+  </script>
+</body>
+```
+从下图可以看到第一种方式并没有把firstWay添加到dom上,而第二个会
+![](setAttribute.png)
+
+从下图证明第一种方式已经把属性加入了对象中,从中可以发现两种方式是将属性放入了不同的位置
+
+![](setAttribute2.png)
+
+[Demo Code](settingAttributeDemo.html)

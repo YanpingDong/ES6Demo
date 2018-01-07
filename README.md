@@ -162,7 +162,7 @@ div{
 }
 
 index.HTML
-<link rel="stylesheet" href="import.css path/import.css">
+<link rel="stylesheet" href="path/import.css">
 ```
 
 >　　链接式和导入式的区别：
@@ -249,6 +249,21 @@ console.log(obj1.name); // 输出我有名字了，说明这两个引用数据�
 Demo dir 命令控台输出如下图所示：
 
 ![](pic\primaryAndReferenceDataType.png)
+
+
+# [console常用调试命令]
+
+　　本节说明了console的几大类命令，可以很方便的在控制台看输出信息，方便调试：
+
+1. 显示命令(log,info,error,warn)和占位符（%s，%d/%i,%f,%o）.
+2. 信息分组(group)
+3. 查看对象的信息(dir)
+4. 显示某个节点的内容(dirxml)
+5. 判断变量是否是真(assert)
+6. 追踪函数的调用轨迹(trace)
+7. 计时功能(time,timeEnd)
+8. 性能分析(profile)
+
 
 
 # [JS零碎知识](JSFragmentaryKnowledge)

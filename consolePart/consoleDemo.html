@@ -1,0 +1,32 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>console function demo</title>
+	</head>
+  <body>
+    <script>
+      // 1. display and placeholder
+      console.log('hello');
+      console.info('info');
+      console.error('error');
+      console.warn('warn');
+      console.log("%d年%d月%d日",2018,1,7);
+
+      //２.group
+      console.group("第一组信息");
+      console.log("第一组第一条");
+      console.log("第一组第二条");
+      console.groupEnd();
+      console.group("第二组信息");
+      console.log("第二组第一条");
+      console.log("第二组第二条");
+      console.groupEnd();
+
+      //3. object info
+      var info={name:"myName", age:123};
+      console.dir(info);
+    </script>
+  </body>
+</html>

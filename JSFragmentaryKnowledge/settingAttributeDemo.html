@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>set attribute demo</title>
+  <style media="screen">
+    .box {
+      margin: 10px;
+      width: 100px;
+      height: 100px;
+      background: red
+    }
+  </style>
+</head>
+
+<body>
+  <div id='boxId' class="box">1</div>
+
+  <script type="text/javascript">
+    var boxDiv = document.getElementById('boxId');
+    boxDiv.firstWay='firstWay'; //don't affect DOM object
+    boxDiv.setAttribute('secondWay',"secondWay");
+  </script>
+</body>
+
+</html>
