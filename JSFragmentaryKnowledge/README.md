@@ -379,3 +379,41 @@ null ==undefined //true
 ![](setAttribute2.png)
 
 [Demo Code](settingAttributeDemo.html)
+
+# js函数的可变参数
+
+　　对于js的可变参数的情况，在定义函数式不需要写上参数， 在函数内部使用argument对象可以 直接获取参数个数等信息
+
+　　在调用函数式可以传递任意个数的参数
+
+```
+function text(){
+　　var length=arguments.length;
+　　for(var i=0;i<length;i++){
+　　　　console.log(arguments[i]);
+　　}
+}
+
+text(1,3,5,6,7,8);   // 1,3,5,6,7,8
+```
+
+ 1. arguments只有函数才会有。
+ 2. 不论是否给函数传递实参，arguments也存在于函数内部，只不过为空集合
+ 3. arguments当中始终存储了所有实参信息
+ 4. arguments以0为开始索引，其本身是类数组集合
+ 5. arguments.callee 存放是的函数本身
+ 6. arguments.callee.caller 存放当前函数执行的环境（宿主），在全局作用域下执行结果是，null
+
+*NOTE:5 6两条在js strict模式下不可用，属于不可访问*
+
+```
+function text(){
+　　console.log(arguments.callee);
+　　console.log(arguments.callee.caller);
+}
+
+function fn(){text()}
+```
+
+输出见下图
+![](argumentsCallee.png)
