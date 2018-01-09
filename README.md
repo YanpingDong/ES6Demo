@@ -265,7 +265,23 @@ Demo dir 命令控台输出如下图所示：
 8. 性能分析(profile)
 9. 表格显示数据(table)
 
+# 匿名函数
 
+1. 函数表达式: 把函数做为"值"赋值给一个变量或者一个元素的事件
+
+```
+oneDev.onClick = function {
+   //函数表达式
+}
+```
+
+2. 自执行函数
+
+```
+(function(n){
+
+  })(10)
+```
 
 # [JS零碎知识](JSFragmentaryKnowledge)
 
