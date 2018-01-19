@@ -40,7 +40,7 @@ npm install npm@latest -g
 
 # package.json 内容
 
-如下示例所示其中包括如下内容：
+　　如下示例所示其中包括如下内容：
 
 1. name:全部小写，没有空格，可以使用下划线或者横线
 2. version:x.x.x 的格式, **符合“语义化版本规则”**
@@ -161,15 +161,17 @@ $ npm install sax@">=0.1.0 <0.2.0"
 
 **注：但是代码中，直接通过require()的方式是没有办法调用全局安装的包的。全局的安装是供命令行使用的，就好像全局安装了vmarket后，就可以在命令行中直接运行vm命令。所以安装的时候一定要想清楚是代码中使用还是命令行中使用**
 
-## 安装参数 --save 和 --save -dev
+## 安装参数 --save 和 --save-dev
 
 　　添加依赖时我们可以手动修改 package.json 文件，添加或者修改 dependencies devDependencies 中的内容即可。
 
-　　另一种方式是用命令行，在使用 npm install 时增加 `--save` 或者 `--save -dev` 后缀：
+　　另一种方式是用命令行，在使用 npm install 时增加 `--save` 或者 `--save-dev` 后缀：
 
 1. npm install <package_name> --save 表示将这个包名及对应的版本添加到 package.json的 dependencies
 
 2. npm install <package_name> --save-dev 表示将这个包名及对应的版本添加到 package.json的 devDependencies
+
+# npm outdated更新操作
 
 　　有时候我们想知道依赖的包是否有新版本，可以使用 npm outdated 查看，如果发现有的包有新版本，就可以使用 npm update <package-name> 更新它，或者直接 npm update 更新所有。如果真接使用npm outdate lodash更新会更新到Wanted指定的版本，如下图所示。
 
@@ -200,6 +202,8 @@ $ npm install sax@">=0.1.0 <0.2.0"
 
 **注：只有当前模块版本低于远程，package.json 中的版本语义规则满足情况，才能更新成功。**
 
+　　想知道哪些包需要更新，可以使用 npm outdated -g --depth=0，然后使用 npm update -g <package>更新指定的包
+
 # 卸载本地package
 
 　　卸载一个本地 package 很简单，npm uninstall <package-name> 即可
@@ -227,9 +231,7 @@ $ npm install sax@">=0.1.0 <0.2.0"
 
 　　Homebrew 会帮我们处理好权限的问题。
 
-#　更新/卸载全局的 package
-
-　　想知道哪些包需要更新，可以使用 npm outdated -g --depth=0，然后使用 npm update -g <package>更新指定的包
+#　卸载全局的 package
 
 　　卸载全局：npm uninstall -g <package>
 
