@@ -324,6 +324,6 @@ oneDev.onClick = function {
 |字符串|s|sValue|
 |变型(可以是任何类型) |v	|vValue|
 
-# [npm 相关知识](NpmRelatedKnowledge\README.md)
+# [npm 相关知识](NpmRelatedKnowledge)
 
 　　介绍什么是npm，用npm能做什么，以及与其相关的package.json文件做用
