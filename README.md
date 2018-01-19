@@ -327,3 +327,74 @@ oneDev.onClick = function {
 # [npm 相关知识](NpmRelatedKnowledge)
 
 　　介绍什么是npm，用npm能做什么，以及与其相关的package.json文件做用
+
+# [Webpack](Webpack)
+
+　　简介什么是Webpack，为什么要使用Webpack。
+
+# Javascript(es2016) import和require用法和区别
+
+　　这两种语法不能直接被浏览器使用，需要用Webpack进行转换，变为浏览器可以使用的方案。细节见 [Webpack](Webpack) 部分
+
+## import方式
+
+lib.js输出一个功能如下
+
+```
+export const sqrt = Math.sqrt;
+export function square(x) {
+    return x * x;
+}
+export function diag(x, y) {
+    return sqrt(square(x) + square(y));
+}
+```
+
+比如在yourMath.js中要使用可以通过如下引用
+
+```
+//方法一
+import { square, diag } from 'lib';
+console.log(square(11)); // 121
+console.log(diag(4, 3));
+//方法二
+import * as lib from 'lib';
+square = lib.square;
+```
+
+## require方式
+其实nodejs目前也是使用这种方式创建包和引入包
+Greater.js中代码如下
+
+```
+//Greater.js
+module.exports = function() {
+  var greet = document.createElement('div');
+  greet.textContent = "Hi there and greetings!";
+  return greet;
+};
+```
+
+在main.js中用require引入
+
+```
+//main.js
+const greeter = require('./Greeter.js'); //和main.js在同一目录
+document.querySelector("#root").appendChild(greeter());
+```
+
+| 加载方式 |规范|命令|特点|
+|---|:---:|:---:|---:|
+|运行时加载| CommonJS/AMD | require | 社区方案，提供了服务器/浏览器的模块加载方案。非语言层面的标准。只能在运行时确定模块的依赖关系及输入/输出的变量，无法进行静态优化。|
+|编译时加载| ESMAScript6+| import |语言规格层面支持模块功能。支持编译时静态分析，便于JS引入宏和类型检验。动态绑定。|
+
+## import xxx from 和 import {xxx} from 区别
+
+　　在导出模块的时候是否使用了export default来导出（**该方式有且只能有一个**）如是，那么就可以使用import xxx from，否则需要使用import {xxx} from。
+
+　　两个导出的区别如下：
+
+1. export与export default均可用于导出常量、函数、文件、模块等
+2. 在一个文件或模块中，export、import可以有多个，export default仅有一个
+3. 通过export方式导出，在导入时要加{ }，export default则不需要
+4. export能直接导出变量表达式，export default不行。
