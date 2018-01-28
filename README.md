@@ -324,13 +324,18 @@ oneDev.onClick = function {
 |字符串|s|sValue|
 |变型(可以是任何类型) |v	|vValue|
 
+# [javascript立即执行函数](ImmediateFunctions)
+
+　　简单说明什么是立即执行函数，CommonJS/AMD的方案就是使用了立即执行函数在全局window对象上挂了两个方法，一个叫require()另一个叫define()。然后模块编写者只需要在自已编写的模块中调用define（）方法，把自己的模块注册进去，其它模块在依赖的时候可以使用require进行查找。
+
 # [npm 相关知识](NpmRelatedKnowledge)
 
 　　介绍什么是npm，用npm能做什么，以及与其相关的package.json文件做用
 
+
 # [Webpack](Webpack)
 
-　　简介什么是Webpack，为什么要使用Webpack。
+　　简介什么是Webpack，为什么要使用Webpack。在看本节的时候需要先看 [javascript立即执行函数](ImmediateFunctions) ,在解读webpack转码后的js需要知道产即执行函数的功能和写法.
 
 # Javascript(es2016) import和require用法和区别
 
@@ -398,7 +403,3 @@ document.querySelector("#root").appendChild(greeter());
 2. 在一个文件或模块中，export、import可以有多个，export default仅有一个
 3. 通过export方式导出，在导入时要加{ }，export default则不需要
 4. export能直接导出变量表达式，export default不行。
-
-# [javascript立即执行函数](ImmediateFunctions)
-
-　　简单说明什么是立即执行函数，CommonJS/AMD的方案就是使用了立即执行函数在全局window对象上挂了两个方法，一个叫require()另一个叫define()。然后模块编写者只需要在自已编写的模块中调用define（）方法，把自己的模块注册进去，其它模块在依赖的时候可以使用require进行查找。

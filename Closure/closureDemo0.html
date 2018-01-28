@@ -1,0 +1,25 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>closure function demo</title>
+	</head>
+  <body>
+    <script>
+      function a(b){
+        var n = 0;
+        function inc(){
+          n++;
+          console.log(n+b);
+        }
+        return inc;
+      }
+      var c = a(1); //实际是 var c = inc; 注意，函数名只是一个标识（指向函数的指针），而()才是执行函数
+      c();  //控制台输出2
+
+      var d = a(10)
+      d();  //控制台输出11
+    </script>
+  </body>
+</html>

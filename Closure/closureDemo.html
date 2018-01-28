@@ -1,0 +1,27 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>closure function demo</title>
+	</head>
+  <body>
+    <script>
+      function a(b){
+        var n = 0;
+        this.inc = function () {
+          n++;
+          b++;
+          console.log(n);
+          console.log(b);
+        };
+      }
+
+      var c = new a(1)
+      c.inc() //输出1,2
+
+      var d = new a(10)
+      d.inc() //输出1,11
+    </script>
+  </body>
+</html>

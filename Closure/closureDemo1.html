@@ -1,0 +1,25 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>closure function demo</title>
+	</head>
+  <body>
+    <script>
+      function createFunctions(){
+        var result = new Array();
+        for (var i=0; i < 10; i++){
+          result[i] = function(){
+            return i;
+          };
+        }
+        return result;
+      }
+      var funcs = createFunctions();
+      for (var i=0; i < funcs.length; i++){
+        console.log(funcs[i]());
+      }
+    </script>
+  </body>
+</html>
