@@ -324,6 +324,10 @@ oneDev.onClick = function {
 |字符串|s|sValue|
 |变型(可以是任何类型) |v	|vValue|
 
+# [闭包](Closure)
+
+　　说明什么是闭包，闭包的用法，以及常见错误使用方式
+
 # [javascript立即执行函数](ImmediateFunctions)
 
 　　简单说明什么是立即执行函数，CommonJS/AMD的方案就是使用了立即执行函数在全局window对象上挂了两个方法，一个叫require()另一个叫define()。然后模块编写者只需要在自已编写的模块中调用define（）方法，把自己的模块注册进去，其它模块在依赖的时候可以使用require进行查找。
