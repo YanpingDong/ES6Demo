@@ -341,6 +341,73 @@ oneDev.onClick = function {
 
 　　简介什么是Webpack，为什么要使用Webpack。在看本节的时候需要先看 [javascript立即执行函数](ImmediateFunctions) ,在解读webpack转码后的js需要知道产即执行函数的功能和写法.
 
+# 类数组
+
+1. 拥有length属性，其它属性（索引）为非负整数(对象中的索引会被当做字符串来处理，这里你可以当做是个非负整数串来理解)
+
+2. 不具有数组所具有的方法
+
+## 类数组示例：
+
+　　注意三个示例+号位置，可以明确表明，Arryr方法在处理的时候是按length属性做结束并按非负整数串的顺序来取数据。
+
+　　第二个示例去掉了length即Array的方法不认为b为类数据所以没有操作
+
+　　第三个示例将love属性（索引）变为负数，Array方法也不认该位置
+
+```
+var a = {'1':'gg','2':'love','4':'meimei',length:5};
+Array.prototype.join.call(a,'+'); //l输出'+gg+love++meimei'
+
+var b = {'1':'gg','2':'love','4':'meimei'};
+Array.prototype.join.call(b,'+'); //输出''
+
+var c = {'1':'gg','-2':'love','4':'meimei',length:5};
+Array.prototype.join.call(c,'+'); //输出"+gg+++meimei"
+```
+
+　　javascript中常见的类数组有arguments对象和DOM方法的返回结果。
+比如 document.getElementsByTagName()。
+
+## 类数组判断
+
+　　javascript权威指南》上给出了代码用来判断一个对象是否属于“类数组”。如下：
+
+```
+// Determine if o is an array-like object.
+// Strings and functions have numeric length properties, but are
+// excluded by the typeof test. In client-side JavaScript, DOM text
+// nodes have a numeric length property, and may need to be excluded
+// with an additional o.nodeType != 3 test.
+function isArrayLike(o) {
+    if (o &&                                // o is not null, undefined, etc.
+        typeof o === 'object' &&            // o is an object
+        isFinite(o.length) &&               // o.length is a finite number
+        o.length >= 0 &&                    // o.length is non-negative
+        o.length===Math.floor(o.length) &&  // o.length is an integer
+        o.length < 4294967296)              // o.length < 2^32
+        return true;                        // Then o is array-like
+    else
+        return false;                       // Otherwise it is not
+}
+```
+
+## 类数组表现
+
+　　之所以成为“类数组”，就是因为和“数组”类似。不能直接使用数组方法，但你可以像使用数组那样，使用类数组。
+
+```
+var a = {'0':'a', '1':'b', '2':'c', length:3};  // An array-like object
+Array.prototype.join.call(a, '+'');  // => 'a+b+c'
+Array.prototype.slice.call(a, 0);   // => ['a','b','c']: true array copy
+Array.prototype.map.call(a, function(x) {
+    return x.toUpperCase();
+});                                 // => ['A','B','C']:
+```
+
+> 可以利用数组的join和eval方法来对数组求和。比如 arg=[1,2,3]
+> eval(arg.join('+'))
+
 # Javascript(es2016) import和require用法和区别
 
 　　这两种语法不能直接被浏览器使用，需要用Webpack进行转换，变为浏览器可以使用的方案。细节见 [Webpack](Webpack) 部分
