@@ -60,6 +60,9 @@ function bar(){
 bar()
 ```
 
+[DemoCode](variableHoistDemo.html)
+
+
 ## 函数提升
 
 　　js中创建函数有两种方式：函数声明式和函数字面量式。只有 *函数声明* 才存在函数提升！如:
