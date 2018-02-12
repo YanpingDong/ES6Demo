@@ -60,6 +60,20 @@ function bar(){
 bar()
 ```
 
+```
+if(!("a" in window)){
+  var a = 1;
+}
+console.log(a); //==undefined
+
+=====解析=====
+var a //变量提升（因为没有块级作用域），全局的变量都会加给windows
+if(!("a" in window)){ //==!true
+  var a = 1;
+}
+console.log(a); //==undefined
+```
+
 [DemoCode](variableHoistDemo.html)
 
 
