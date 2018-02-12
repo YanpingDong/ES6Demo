@@ -287,43 +287,6 @@ oneDev.onClick = function {
 
 　　和JS相关的一些知识，个人觉得需要知道的，或者我个人在这方面比较缺少的。比如函数的返回入参、创建函数的过程实际是创建了一个同名的变量、ES中对类是否有定义、this功能、ESCA中的做用域概念等
 
-# Atom使用的插件
-
-　　可以在Install Packages/Themes中安装需要的插件，方便编辑和提示，比如将HTML代码直接在默认浏览器中显示看效果，或者代码补全。以下是在学习过程中使用到的一些插件。
-
-　　open-in-browser：用来在浏览器中看HTML页面效果。
-
-　　Emmet: (前身为 Zen Coding) 是一个能大幅度提高前端开发效率的工具，能够实现 HTML、CSS 的快速编写。更多详细的使用可以度娘。
-
-　　MarkDown: windows下使用快捷键 ctrl + shift + p，打开命令输入框；输入 markdown preview toggle(可以偷懒只输入mdpt，支持模糊匹配)。如果没有热键冲突可以使用ctrl + shift + m
-
-# 著名的变量命名规则
-
-**Camel 标记法**
-
-　　首字母是小写的，接下来的字母都以大写字符开头。例如：
-`var myTestValue = 0;`
-
-**Pascal 标记法**
-
-　　首字母是大写的，接下来的字母都以大写字符开头。例如：`var MyTestValue = 0;`
-
-**匈牙利类型标记法**
-
-　　在以 Pascal 标记法命名的变量前附加一个小写字母（或小写字母序列），说明该变量的类型。例如，i 表示整数，s 表示字符串。例如：`var iMyTestValue = 0;`
-
-| 类型 |前缀|示例|
-|---|:---:|---:|
-|数组	 |a	|aValues|
-|布尔型|b |bFound|
-|浮点型（数字）|	f	|fValue|
-|函数	|fn	|fnMethod|
-|整型(数字)|i|iValue|
-|对象	|o|oType
-|正则表达式|re	|rePattern|
-|字符串|s|sValue|
-|变型(可以是任何类型) |v	|vValue|
-
 # [闭包](Closure)
 
 　　说明什么是闭包，闭包的用法，以及常见错误使用方式
@@ -408,6 +371,31 @@ Array.prototype.map.call(a, function(x) {
 > 可以利用数组的join和eval方法来对数组求和。比如 arg=[1,2,3]
 > eval(arg.join('+'))
 
+# 数组塌陷问题
+
+　　先看一段代码,如果没有i--会发生什么。
+
+```
+var ary = [1,2,3,4,5,3,2]
+
+# 去重数组中数据
+for (var i = 0; i < ary.length; i++){
+  var cur = ary[i];
+  var remainingAry = ary.splice(i);
+  if (remainingAry.indexOf(cur) === -1)
+  {
+    continue;
+  }
+  else
+  {
+    ary.splice(i,1)
+    i--
+  }
+}
+```
+
+　　我们知道如果使用splice(i,1)去掉i后，后面的数据会向前移，然后i++会跳过原本在i+1位的数据，因为现在已经是i上的，所以一定要加i--。数组在删除一位后数组数据前移就叫数组塌陷
+
 # Javascript(es2016) import和require用法和区别
 
 　　这两种语法不能直接被浏览器使用，需要用Webpack进行转换，变为浏览器可以使用的方案。细节见 [Webpack](Webpack) 部分
@@ -474,3 +462,40 @@ document.querySelector("#root").appendChild(greeter());
 2. 在一个文件或模块中，export、import可以有多个，export default仅有一个
 3. 通过export方式导出，在导入时要加{ }，export default则不需要
 4. export能直接导出变量表达式，export default不行。
+
+# Atom使用的插件
+
+　　可以在Install Packages/Themes中安装需要的插件，方便编辑和提示，比如将HTML代码直接在默认浏览器中显示看效果，或者代码补全。以下是在学习过程中使用到的一些插件。
+
+　　open-in-browser：用来在浏览器中看HTML页面效果。
+
+　　Emmet: (前身为 Zen Coding) 是一个能大幅度提高前端开发效率的工具，能够实现 HTML、CSS 的快速编写。更多详细的使用可以度娘。
+
+　　MarkDown: windows下使用快捷键 ctrl + shift + p，打开命令输入框；输入 markdown preview toggle(可以偷懒只输入mdpt，支持模糊匹配)。如果没有热键冲突可以使用ctrl + shift + m
+
+# 著名的变量命名规则
+
+**Camel 标记法**
+
+　　首字母是小写的，接下来的字母都以大写字符开头。例如：
+`var myTestValue = 0;`
+
+**Pascal 标记法**
+
+　　首字母是大写的，接下来的字母都以大写字符开头。例如：`var MyTestValue = 0;`
+
+**匈牙利类型标记法**
+
+　　在以 Pascal 标记法命名的变量前附加一个小写字母（或小写字母序列），说明该变量的类型。例如，i 表示整数，s 表示字符串。例如：`var iMyTestValue = 0;`
+
+| 类型 |前缀|示例|
+|---|:---:|---:|
+|数组	 |a	|aValues|
+|布尔型|b |bFound|
+|浮点型（数字）|	f	|fValue|
+|函数	|fn	|fnMethod|
+|整型(数字)|i|iValue|
+|对象	|o|oType
+|正则表达式|re	|rePattern|
+|字符串|s|sValue|
+|变型(可以是任何类型) |v	|vValue|
