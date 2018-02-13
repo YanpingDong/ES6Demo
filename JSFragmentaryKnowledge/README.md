@@ -417,3 +417,28 @@ function fn(){text()}
 
 输出见下图
 ![](argumentsCallee.png)
+
+# &&逻辑与||逻辑或
+
+1. 在条件判断中
+
+&&：所有条件都为真，整体才为真
+||：只要一个条件为真，整体就为真
+
+2. 在赋值操作中
+
+&&： A&&B 首先看A的真假，A为假返回A的值，A为真返回B的值
+
+```
+var arg = 1&&2 //=>arg=2
+var arg = 0&&false //=>arg=0
+```
+
+||： A||B首先看A的真假，A为真返回的是A的值，A为假返回B的值（不管B是啥）
+
+```
+var arg = 1||2 //=>arg=1
+var arg = 0||false //=>arg=false
+```
+
+![](logicOrAnd.jpg)
