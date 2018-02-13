@@ -442,3 +442,29 @@ var arg = 0||false //=>arg=false
 ```
 
 ![](logicOrAnd.jpg)
+
+特别示例，|| &&混用时先算&&再算||
+
+```
+0||2&&false||3
+1. 2&&false ==>0||false||3
+2. 0||false ==> false||3
+3. false||3==>3
+```
+
+# undefined null可能出现在声所
+
+undefined:
+
+1. 变量提升： 只声明未定义默认值
+2. 严格模式下： 没有明确的执行主体，this就是undefined
+3. 对象没有定义某个属性，该属性被使用就是undefined
+4. 函数定义形参不传值，默认是undefined
+5. 函数没有返回值（return；或 没有return），默认返回的是undefied
+
+null:
+
+1. 手动设置为null
+2. 在js的DOM元素获取，如果没有获取到指定的无素对象，结果一般都是null
+3. Object.prototype.\__proto__ 的值是null
+4. 正则捕获的时候，如果没有捕获到结果，默认是null
