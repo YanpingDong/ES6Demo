@@ -115,8 +115,8 @@ document.querySelector("#root").appendChild(greeter());
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
-
-module.exports = function() {
+ //将module.exports的map类型变为function类型
+ module.exports = function() {
  var greet = document.createElement('div');
  greet.textContent = "Hi there and greetings!";
  return greet;
