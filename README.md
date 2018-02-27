@@ -398,7 +398,7 @@ for (var i = 0; i < ary.length; i++){
 
 # Javascript(es2016) import和require用法和区别
 
-　　这两种语法不能直接被浏览器使用，需要用Webpack进行转换，变为浏览器可以使用的方案。细节见 [Webpack](Webpack) 部分
+　　**这两种语法不能直接被浏览器使用** ，需要用Webpack进行转换，变为浏览器可以使用的方案。细节见 [Webpack](Webpack) 部分
 
 ## import方式
 
@@ -449,12 +449,12 @@ document.querySelector("#root").appendChild(greeter());
 
 | 加载方式 |规范|命令|特点|
 |---|:---:|:---:|---:|
-|运行时加载| CommonJS/AMD | require | 社区方案，提供了服务器/浏览器的模块加载方案。非语言层面的标准。只能在运行时确定模块的依赖关系及输入/输出的变量，无法进行静态优化。|
-|编译时加载| ESMAScript6+| import |语言规格层面支持模块功能。支持编译时静态分析，便于JS引入宏和类型检验。动态绑定。|
+| 运行时加载 | CommonJS/AMD | require | 社区方案，提供了服务器/浏览器的模块加载方案。非语言层面的标准。只能在运行时确定模块的依赖关系及输入/输出的变量，无法进行静态优化。|
+| 编译时加载 | ESMAScript6+| import | 语言规格层面支持模块功能。支持编译时静态分析，便于JS引入宏和类型检验。动态绑定。|
 
 ## import xxx from 和 import {xxx} from 区别
 
-　　在导出模块的时候是否使用了export default来导出（**该方式有且只能有一个**）如是，那么就可以使用import xxx from，否则需要使用import {xxx} from。
+　　在导出模块的时候是否使用了export default来导出（**该方式有且只能有一个**）。如是，那么就可以使用import xxx from，否则需要使用import {xxx} from。
 
 　　两个导出的区别如下：
 

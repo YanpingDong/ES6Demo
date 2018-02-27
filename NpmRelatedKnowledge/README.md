@@ -92,7 +92,7 @@ npm install npm@latest -g
 
 ```
 
-　　如果在你的项目里有 package.json 文件，运行 npm install 后它会自动查找package.json文件中列出的依赖包，然后下载符合语义化版本规则的版本。
+　　如果在你的项目里有 package.json 文件，运行 *npm install* 后它会自动查找package.json文件中列出的依赖包，然后下载符合语义化版本规则的版本。
 
 　　**npm install 默认会安装 package.json 中 dependencies 和 devDependencies 里的所有模块。**
 

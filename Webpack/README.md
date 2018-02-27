@@ -94,6 +94,11 @@ document.querySelector("#root").appendChild(greeter());
      });
    }
  };
+ // Object.prototype.hasOwnProperty.call
+ __webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+
+ // __webpack_public_path__
+ __webpack_require__.p = "";
 
  // Load entry module and return exports
  return __webpack_require__(__webpack_require__.s = 0);
@@ -208,7 +213,8 @@ module.exports = {
 当工程根目录下有了webpack.config.js文件后就可以直接使用 `webpack` 命令来操做,所有的说明都在配置文件声名,所以就不必带参数执行
 Demo 简单配置如下:
 
-```module.exports = {
+```
+module.exports = {
   entry:  __dirname + "/app/main.js",//已多次提及的唯一入口文件
   output: {
     path: __dirname + "/public",//打包后的文件存放的地方
@@ -240,6 +246,7 @@ npm package.json配置示例,有了如下配置可以直接使用 `npm start` �
   }
 }
 ```
+
 完整示例:[ES6ReactDemo](ES6ReactDemo)
 
 # 构建本地服务器
@@ -318,6 +325,7 @@ Babel其实是几个模块化的包，其核心功能位于称为babel-core的np
 // npm一次性安装多个依赖模块，模块之间用空格隔开
 npm install --save-dev babel-core babel-loader babel-preset-env babel-preset-react
 ```
+
 在webpack中配置Babel的方法如下:
 
 ```
@@ -436,7 +444,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import Greeter from './Greeter';
 
-import './main.css';//使用require导入css文件
+import './main.css';
 
 render(<Greeter />, document.getElementById('root'));
 ```
