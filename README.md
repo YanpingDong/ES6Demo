@@ -295,6 +295,97 @@ oneDev.onClick = function {
 
 　　简单说明什么是立即执行函数，CommonJS/AMD的方案就是使用了立即执行函数在全局window对象上挂了两个方法，一个叫require()另一个叫define()。然后模块编写者只需要在自已编写的模块中调用define（）方法，把自己的模块注册进去，其它模块在依赖的时候可以使用require进行查找。
 
+# 回调函数
+
+在Javascript中，函数是第一类对象，这意味着函数可以像对象一样按照第一类管理被使用。既然函数实际上是对象：那么它们就能被“存储”在变量中，能作为函数参数被传递，能在函数中被创建，能从函数中返回。
+
+回调函数是从一个叫函数式编程的编程范式中衍生出来的概念。简单来说，函数式编程就是使用函数作为**变量**。
+
+一个回调函数，也被称为高阶函数，是一个被作为参数传递给另一个函数（在这里我们把另一个函数叫做“otherFunction”）的函数，回调函数在otherFunction中被调用。一个回调函数本质上是一种编程模式（为一个常见问题创建的解决方案），因此，使用回调函数也叫做回调模式。
+
+下面是一个在jQuery中使用回调函数简单普遍的例子：
+
+```js
+//注意到click方法中是一个函数而不是一个变量
+//它就是回调函数
+$("#btn_1").click(function() {
+  alert("Btn 1 Clicked");
+});
+```
+
+下面是另一个Javascript中典型的回调函数的例子：
+
+```js
+var friends = ["Mike", "Stacy", "Andy", "Rick"];
+ 
+friends.forEach(function (eachName, index){
+console.log(index + 1 + ". " + eachName); // 1. Mike, 2. Stacy, 3. Andy, 4. Rick
+});
+```
+
+## 回调函数是闭包
+
+正如我们所知，闭包能够进入包含它的函数的作用域，因此回调函数能获取包含它的函数中的变量，以及全局作用域中的变量。
+
+## 使用this对象的方法作为回调函数时的问题
+
+当回调函数是一个this对象的方法时，我们必须改变执行回调函数的方法来保证this对象的上下文。否则如果回调函数被传递给一个全局函数，this对象要么指向全局window对象（在浏览器中）。要么指向包含方法的对象。 
+
+看一个完整示例：
+
+```js
+//定义一个拥有一些属性和一个方法的对象 
+//我们接着将会把方法作为回调函数传递给另一个函数
+var clientData = {
+	  fullName: "",
+    id : 5566,
+    setUserName : function(firstName, lastName) 
+  	{
+		this.fullName=firstName + " " + lastName;
+    }
+}; 
+function getUserInput(firstName, lastName, callback){
+    //在这做些什么来确认firstName/lastName
+    //现在存储names
+    callback(firstName, lastName);
+}
+
+getUserInput("Barack","Obama",clientData.setUserName);
+ 
+console.log(clientData.fullName);  //Not Set
+ 
+//fullName属性将在window对象中被初始化    
+console.log(window.fullName);  //Barack Obama
+```
+
+## 使用Call和Apply函数来保存this
+
+我们可以使用Call或者Apply函数来修复上面你的问题。到目前为止，我们知道了每个Javascript中的函数都有两个方法:Call 和 Apply。这些方法被用来设置函数内部的this对象以及给此函数传递变量。
+
+为了修复前面例子的问题，我将在下面你的例子中使用Apply函数：
+
+```js
+//注意到我们增加了新的参数作为回调对象，叫做“callbackObj”
+function getUserInput(firstName, lastName, callback, callbackObj){
+        //在这里做些什么来确认名字 
+        callback.apply(callbackObj, [firstName, lastName]);
+}
+
+getUserInput("Barack", "Obama", clientData.setUserName, clientData);
+
+console.log(clientData.fullName); //Barack Obama
+```
+
+##用处
+
+在Javascript编程中回调函数经常以几种方式被使用，尤其是在现代web应用开发以及库和框架中：
+
+- 异步调用（例如读取文件，进行HTTP请求，等等）
+- 时间监听器/处理器
+- setTimeout和setInterval方法
+- 一般情况：精简代码
+
+
 # [npm 相关知识](NpmRelatedKnowledge)
 
 　　介绍什么是npm，用npm能做什么，以及与其相关的package.json文件做用
