@@ -1,6 +1,6 @@
 # javascript立即执行函数作用
 
-　　在Javascript中，任何function在执行的时候都会创建一个执行上下文，因为为function声明的变量和function有可能只在该function内部，这个上下文，在调用function的时候，提供了一种简单的方式来创建自由变量或私有子function。
+　　在Javascript中，任何function在执行的时候都会创建一个执行上下文，因为为function声明的变量和function有可能只在该function内部！在这个上下文中，在调用该function的时候，提供了一种简单的方式来创建自由变量或私有子function。
 
 　　作用：根据javascript函数作用域链的特性,可以使用这种技术可以模仿一个私有作用域,用匿名函数作为一个"容器","容器"内部可以访问外部的变量,而外部环境不能访问"容器"内部的变量,所以( function(){…} )()内部定义的变量不会和外部的变量发生冲突,俗称"匿名包裹器"或"命名空间"。
 
@@ -19,6 +19,35 @@
 1. Javascript引擎在解析javascript代码时会 "函数声明提升" (Function declaration Hoisting)当前执行环境(作用域)上的函数声明,而函数表达式必须等到Javascirtp引擎执行到它所在行时,才会从上而下一行一行地解析函数表达式
 
 2. 函数表达式后面可以加括号立即调用该函数,函数声明不可以,只能以fnName()形式调用
+
+```js
+fnName(); 
+function fnName(){ 
+  ... 
+} 
+//正常,因为"提升"了函数声明,函数调用可在函数声明之前 
+
+fnName(); 
+var fnName = function(){ 
+    ... 
+} 
+//报错,变量fnName还未保存对函数的引用,函数调用必须在函数表达式之后
+
+var fnName = function(){ 
+    alert("Hello World"); 
+}(); 
+//函数表达式后面加括号,当javascript引擎解析到此处时能立即调用函数 
+
+function fnName(){ 
+    alert("Hello World"); 
+}(); 
+//不会报错,但是javascript引擎只解析函数声明,忽略后面的括号,函数声明不会被调用 
+
+function(){ 
+    console.log("Hello World"); 
+}();
+//语法错误,虽然匿名函数属于函数表达式,但是未进行赋值操作, 所以javascript引擎将开头的function关键字当做函数声明,
+```
 
 # 立即执行函数写法
 
