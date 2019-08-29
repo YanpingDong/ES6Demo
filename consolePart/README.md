@@ -4,7 +4,7 @@
 
 　　使用log  info  error  warn等方法在console中输出数据的时候是可以使用占位符（%s，%d/%i,%f,%o）
 
-```
+```js
 console.log('hello');
 console.info('info');
 console.error('error');
@@ -18,7 +18,7 @@ console.warn('warn');
 
 　　使用group可以对输出信息进行分组
 
-```
+```js
 console.group("第一组信息");
 console.log("第一组第一条");
 console.log("第一组第二条");
@@ -37,7 +37,7 @@ console.groupEnd();
 
 　　使用console.dir可以打出任意一个对像的整体结构.
 
-```
+```js
 var info={name:"myName", age:123};
 console.dir(info);
 ```
@@ -51,7 +51,7 @@ console.dir(info);
 
 　　获取到DOM元素节点后可以通过dirxml来输出该节点所包括的html/xml代码
 
-```
+```js
 <div id="info">
   <h3>info div</h3>
   <p>need to print something</p>
@@ -67,7 +67,7 @@ console.dirxml(infoDiv);
 
 　　console.assert()用来判断一个表达式或变量是否为真。如果结果为否，则在控制台输出一条相应信息，并且抛出一个异常。
 
-```
+```js
 var result = 1;
 console.assert(result);
 console.assert(result===2); //output error exception
@@ -79,7 +79,7 @@ console.assert(result===2); //output error exception
 
 　　如果想知道函数之间的调用链可以使用trace
 
-```
+```js
 /*函数是如何被调用的，在其中加入console.trace()方法就可以了*/
 function add(a,b){
      console.trace();
@@ -99,7 +99,7 @@ function add1(a,b){return add(a,b);}
 
 　　console.time()和console.timeEnd()，用来显示代码的运行时间。
 
-```
+```js
 console.time("控制台计时器一");
 for(var i=0;i<1000;i++){
 　　for(var j=0;j<1000;j++){}

@@ -2,7 +2,7 @@
 
 　　有权访问另一个函数作用域内变量的函数都是闭包。即内嵌函数引用外部函数作用域中的变量(包括外部函数做用域内的局部变量如下示例中的n,也包括形参,如下示例中的b).
 
-```
+```js
 代码1
 function a(b){
   var n = 0;
@@ -20,7 +20,7 @@ function a(b){
 
 　　闭包的另一种常见形式
 
-```
+```js
 代码2
 function a(b){
   var n = 0;
@@ -51,7 +51,7 @@ d();  //控制台输出11
 
 # 常见的错误用法
 
-```
+```js
 function createFunctions(){
   var result = new Array();
   for (var i=0; i < 10; i++){
@@ -75,7 +75,7 @@ for (var i=0; i < funcs.length; i++){
   return i;
 }; 是不会产生函数行为,所以i是没有被替换,而当被替换的时候i已经是10了.后面接一句 f(); 才会执行函数内部的代码。上面代码翻译一下就是：
 
-```
+```js
 var result = new Array(), i;
 result[0] = function(){ return i; }; //没执行函数，函数内部不变，不能将函数内的i替换！
 result[1] = function(){ return i; }; //没执行函数，函数内部不变，不能将函数内的i替换！
