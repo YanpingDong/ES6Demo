@@ -590,3 +590,129 @@ document.querySelector("#root").appendChild(greeter());
 |正则表达式|re	|rePattern|
 |字符串|s|sValue|
 |变型(可以是任何类型) |v	|vValue|
+
+# 作用域
+
+作用域就是变量与函数的可访问范围，即作用域控制着变量与函数的可见性和生命周期。js的作用域是靠函数来形成的，也就是说一个函数的变量在函数外不可以访问。
+
+## 全局作用域
+
+1. 函数外面定义的变量拥有全局作用域
+
+```js
+var n = 1;
+
+function fn(){
+  console.log(n)// 1
+}
+
+fn();
+```
+
+2. 未定义直接赋值的变量自动声明为拥有全局作用域
+
+```js
+
+function fn(){
+  a = 1;// 1
+}
+
+fn();
+console.log(a) //1
+console.log(window.a) //1
+```
+
+3. window对象(浏览器中对象)的属性拥有全局作用
+
+## 局部作用域
+
+局部作用域一般只在固定的代码片段内可访问到，最常见的例如函数内部，所以在一些地方会把这种作用域成为函数作用域。
+
+```js
+function fn(){
+  var n = 1;
+  console.log(n)// 1
+}
+
+fn();
+
+console.log(n) //Uncaught ReferenceError: n is not defined
+```
+
+## ES5中没有块级作用域导致问题
+
+1. 变量提升导致内层变量会覆盖外层变量
+
+```js
+var n = 10;
+
+function fn(){
+  console.log(n);// undefined
+  if(true){
+    var n = 6;
+    console.log(n);//6
+  }
+}
+```
+
+2. 用来计数的循环变量泄漏为全局变量
+
+```js
+for (var i = 0; i < 10; i++)
+{
+  console.log(i);
+}
+
+console.log(i) //10
+console.log(window.i) //10
+```
+
+## 作用域链
+
+当声明一个函数时，局部作用域一级一级向上包起来，就是作用域链。
+
+1. 当执行函数时，总是先从函数内部找寻局部变量
+2. 如果内部找不到（函数的局部作用域没有），则会向创建函数的作用域（声明函数的作用域）寻找，依次向上
+
+```js
+var n = 10;
+
+function fn(){
+  var n = 20;
+  function fn1(){
+    var n = 30;
+    console.log(n);//30
+  }
+
+  function fn2(){
+    console.log(n);//20
+  }
+
+  function fn3(){
+    n = 25 //引用fn的n如果没有找到再创建,见fn3
+    console.log(n);//25
+  }
+
+  function fn4(){
+    m = 40 //没有找到会创建全局作用局m,看console.log(m);打印结果
+    console.log(m);//40
+  }
+
+  fn1();
+  fn2();
+  fn3();
+  console.log(n) //n被fn3改变为25
+  fn4();
+}
+fn();
+console.log(n); //10
+console.log(m); //40
+```
+
+1. 当执行fn1时，创建函数fn1的执行环境，并将该对象置于链表开头，然后将函数fn的调用对象放在第二位，最后是全局对象，作用域链的链表的结构是fn1->fn->window。从链表的开头寻找变量n，即fn1函数内部找变量n，找到了，结果是30。
+
+2. 执行fn2时，作用域链的链表的结构是fn2->fn->window。从链表的开头寻找变量n，即fn2函数内部找变量n，找不到，于是从fn内部找变量n，找到了，结果是10。
+
+3. 当执行fn3时，创建函数fn3的执行环境，并将该对象置于链表开头，然后将函数fn的调用对象放在第二位，最后是全局对象，作用域链的链表的结构是fn3->fn->window。从链表的开头寻找变量n，即fn3函数内部找变量n，找不到，于是从fn内部找变量n，并把结果改成了25。
+
+4. 当执行fn4时，创建函数fn4的执行环境，并将该对象置于链表开头，然后将函数fn的调用对象放在第二位，最后是全局对象，作用域链的链表的结构是fn4->fn->window。从链表的开头寻找变量m，即fn4函数内部找变量m，找不到，于是从fn内部找变量m,也找不到，转去window找，仍然没有。且没有用var声名所以创建全局对像m并付值40。

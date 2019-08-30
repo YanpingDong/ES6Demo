@@ -90,3 +90,34 @@ console.log(i); // funcs[1]()就是执行 return i 语句，就是返回10
 ...
 console.log(i); // funcs[9]()就是执行 return i 语句，就是返回10
 ```
+
+# 闭包优缺点
+
+闭包外部函数能够读取内部函数的变量，最后会导致不释放。
+
+优点：闭包可以形成独立的空间，永久的保存局部变量。
+
+缺点：保存中间值的状态缺点是容易造成内存泄漏，因为闭包中的局部变量永远不会被回收
+
+示例：
+
+```js
+function closureFn(){
+  var n = 999; //局部变量，本应该在closureFn函数执行完释放，但闭包导致不能释放
+
+  nAdd = function(){  //没有var声名会变成全局变量，在外部直接使用，但引用了closureFn中的n
+    n += 1;
+  }
+
+  function f() {
+    console.log(n);  // 引用了closureFn中的n,闭包
+  }
+
+  return f;
+}
+
+var r = closureFn();
+r(); // 999
+nAdd();  // n+= 1;
+r(); //1000
+```

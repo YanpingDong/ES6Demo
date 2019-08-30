@@ -119,7 +119,7 @@ console.timeEnd("控制台计时器一");
 
 ![](profileFunctionShow.png)
 
-```
+```js
 function All()
 {
   // alert(11);
@@ -151,7 +151,7 @@ profile输出结果如下
 
 　　可以将如下json数据内容以表格的形式进行展示
 
-```
+```js
 var data = [{"name": "Bob","age": 8, "sex":{"a":1}},{"name": "Roce","age": 15, "sex":{"a":1}},{"name": "Blu","age": 10, "sex":{"a":1}}];
 console.table(data);
 ```
