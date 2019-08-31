@@ -24,6 +24,18 @@
 2. DOM 描述了处理网页内容的方法和接口；
 3. BOM 描述了与浏览器进行交互的方法和接口。
 
+# JavaScript 事件
+
+HTML 事件是发生在 HTML 元素上的事情。
+
+以下是 HTML 事件的实例：
+
+- HTML 页面完成加载
+- HTML input 字段改变时
+- HTML 按钮被点击
+
+通常，当事件发生时，触发执行JavaScript代码。
+
 # JavaScript
 
 　  JS，是JavaScript的缩写形式。JS可以理解成为一种用来依据事件或依据数据进行条件判断进而操作HTML DOM的脚本语言。比如增、删、隐藏、改变显示样式（即改变CSS）等操作。有如下比喻还是比较形像：
@@ -34,6 +46,14 @@
 
 　　也就是说HTML+CSS只是一个静态的HTML页面，而各种交互效果比如点击响应，图片切换等需要使用JS，即JS用来操作这些页面无素（DOM元素）。所以需要注意只要结构加载完的页面元素才可以获取到，这也就是为什么CSS会放在HTML BODY体头而JS放到HTML BODY尾的一个原因。**目前大部分项目会把CSS引入放到BODY 中的Head里，而JS引入放到BODY尾**
 
+```
+JavaScript web 开发人员必须学习的 3 门语言中的一门：
+
+1. HTML 定义了网页的内容
+2. CSS 描述了网页的布局
+3. JavaScript 网页的行为
+```
+
 > 如果把JS放到了HTML头，可以使用如下方式等到所有结构加载完成后再加载JS
 > 1. JS： window.onload=function(){}，是JS的标准做法，等页面所有资源文件都加载完成后再执行
 > 2. JQ：$(document).ready(function(){}),是JQuery的方式
@@ -41,6 +61,65 @@
 > 4. IE 6 7 8下 window.attachEvent('onreadystatechange',function(){})
 
 [浏览器判断方法](JudgeBrowserAndVersion)
+
+# JavaScript 数据类型
+
+在 JavaScript 中有 5 种不同的数据类型：
+
+    string
+    number
+    boolean
+    object
+    function
+
+3 种对象类型：
+
+    Object
+    Date
+    Array
+
+2 个不包含任何值的数据类型：
+
+    null
+    undefined
+
+## undefined 和 null 的区别
+
+```
+null 和 undefined 的值相等，但类型不等：
+typeof undefined             // undefined
+typeof null                  // object
+null === undefined           // false
+null == undefined            // true
+```
+## 何时使用null?
+
+当使用完一个比较大的对象时，需要对其进行释放内存时，设置为 null。
+
+## null 与 undefined 的异同点是什么呢？
+
+共同点：
+
+都是原始类型，保存在栈中变量本地。
+
+不同点：
+
+（1）undefined——表示变量声明过但并未赋过值。它是所有未赋值变量默认值，例如：
+
+var a;    // a 自动被赋值为 undefined
+
+（2）null——表示一个变量将来可能指向一个对象。一般用于主动释放指向对象的引用，例如：
+
+var emps = ['ss','nn'];
+emps = null;     // 释放指向数组的引用
+
+## 延伸——垃圾回收站
+
+它是专门释放对象内存的一个程序。
+
+    （1）在底层，后台伴随当前程序同时运行；引擎会定时自动调用垃圾回收期；
+    （2）总有一个对象不再被任何变量引用时，才释放。 
+
 
 # DOM
 
@@ -727,109 +806,32 @@ URL 编码使用 "%" 其后跟随两位的十六进制数来替换非 ASCII 字�
 
 URL 不能包含空格。URL 编码通常使用 + 来替换空格。
 
-# CSS
+# javascript:void(0) 含义 
 
-CSS被用来同时控制多重网页的样式和布局。
+javascript:void(0) 中最关键的是 void 关键字， void 是 JavaScript 中非常重要的关键字，该操作符指定要计算一个表达式但是不返回值。void()仅仅是代表不返回任何值，但是括号内的表达式还是要运行
 
-通过使用 CSS，所有的格式化均可从 HTML 中剥离出来，并存储于一个独立的文件中。
-
-# HTML 属性常用引用属性值
-
-属性值应该始终被包括在引号内。
-
-双引号是最常用的，不过使用单引号也没有问题。
-
-```
-**提示:** 在某些个别的情况下，比如属性值本身就含有双引号，那么您必须使用单引号，例如：name='John "ShotGun" Nelson'
-
-对于中文网页需要使用 <meta charset="utf-8"> 声明编码，否则会出现乱码。
-```
-
-# 什么是 XHTML?
-
-
-- XHTML 指的是可扩展超文本标记语言
-- XHTML 与 HTML 4.01 几乎是相同的
-- XHTML 是更严格更纯净的 HTML 版本
-- XHTML 是以 XML 应用的方式定义的 HTML
-- XHTML 是 2001 年 1 月发布的 W3C 推荐标准
-- XHTML 得到所有主流浏览器的支持
-
-**与 HTML 相比最重要的区别：**
-
-文档结构
-
-- XHTML DOCTYPE 是强制性的
-- \<html\> 中的 XML namespace 属性是强制性的
-- \<html\> \<head\> \<title\> 以及 \<body\> 也是强制性的
-
-元素语法
-
-- XHTML 元素必须正确嵌套  (比如错误嵌套：\<b\>\<i\>粗体和斜体文本\</b\>\</i\>)
-- XHTML 元素必须始终关闭  (比如未关闭 \<img src="happy.gif" alt="Happy face"\>)
-- XHTML 元素必须小写
-- XHTML 文档必须有一个根元素
-
-属性语法
-
-- XHTML 属性必须使用小写
-- XHTML 属性值必须用引号包围
-- XHTML 属性最小化也是禁止的
-
-为了避免如下HTML代码(能运行代不规范)
+语法格式如下：
 
 ```html
-<html>
 <head>
-<meta charset="utf-8">
-<title>这是一个不规范的 HTML</title>
-<body>
-<h1>不规范的 HTML
-<p>这是一个段落
-</body>
+<script type="text/javascript">
+
+void func()
+javascript:void func()
+
+或者
+
+void(func())
+javascript:void(func())
+
+</script>
+</head>
+
+示例：
+
+<a href="javascript:void(0)">单击此处什么也不会发生</a> 
+
+<a href="javascript:void(alert('Warning!!!'))">点我!</a>
+
+void()仅仅是代表不返回任何值，但是括号内的表达式还是要运行
 ```
-
-# HTML5 的改进
-
-- 新元素
-- 新属性
-- 完全支持 CSS3
-- Video 和 Audio
-- 2D/3D 制图
-- 本地存储
-- 本地 SQL 数据
-- Web 应用
-
-# 什么是HTML?
-
-HTML 是用来描述网页的一种语言。
-
--    HTML 指的是超文本标记语言: HyperText Markup Language
--    HTML 不是一种编程语言，而是一种标记语言
--    标记语言是一套标记标签 (markup tag)
--    HTML 使用标记标签来描述网页,描述内容之前关系，比如前后关系，布局关系，内容是图片还是段落还是文字等
--    HTML 文档包含了HTML 标签及文本内容
-
-# 什么是 CSS?
-
--    CSS 指层叠样式表 (Cascading Style Sheets)
--    样式定义**如何显示 HTML 元素**
--    样式通常存储在样式表中
--    把样式添加到 HTML 4.0 中，是为了解决内容与表现分离的问题
--    外部样式表可以极大提高工作效率
--    外部样式表通常存储在 CSS 文件中
--    多个样式定义可层叠为一个
-
-说白了就是把以前内嵌式的style部分独立出来成为单独文件，用来描述如何来渲染HTML元素
-
-## CSS语法
-
-CSS 规则由两个主要的部分构成：选择器，以及一条或多条声明:
-
-![](pic/cssSymbol.jpg)
-
-选择器通常是您需要改变样式的 HTML 元素。
-
-每条声明由一个属性和一个值组成。
-
-属性（property）是您希望设置的样式属性（style attribute）。每个属性有一个值。属性和值被冒号分开。

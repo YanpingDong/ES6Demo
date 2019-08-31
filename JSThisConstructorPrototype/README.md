@@ -10,7 +10,7 @@
 2. this这个对象是谁，依赖函数执行的上下文环境
 3. 每个函数都有一个this用来传递上下文
 
-```
+```js
 // 定义一个全局函数
 function foo() {
   console.log(this.fruit);
@@ -69,6 +69,16 @@ foo1.boo.apply(window); // this is window.
 
 代码示例见 [ThisDemo](thisDemo.html)
 
+
+**事件中的 this**
+
+在 HTML 事件句柄中，this 指向了接收事件的 HTML 元素：
+
+```js
+<button onclick="this.style.display='none'">
+点我后我就消失了
+</button>
+```
 
 ## constructor prototype
 
